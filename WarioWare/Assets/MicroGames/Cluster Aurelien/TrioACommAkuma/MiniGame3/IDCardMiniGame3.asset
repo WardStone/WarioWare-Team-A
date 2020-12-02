@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: IDCardMiniGame3
   m_EditorClassIdentifier: 
   cluster: 1
-  trio: Brigantin
-  aptiqueChal: 0
+  trio: ACommeAkuma
+  haptiqueChal: 0
   inputChal: 0
+  indexEnum: 0
   microGameScene:
     sceneAsset: {fileID: 102900000, guid: 277f6b617c88de84e98a16bbffeebd11, type: 3}
     required: 1
