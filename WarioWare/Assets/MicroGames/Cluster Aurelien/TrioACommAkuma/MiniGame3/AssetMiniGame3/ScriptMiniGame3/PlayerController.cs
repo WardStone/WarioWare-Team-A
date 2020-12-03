@@ -27,10 +27,13 @@ namespace TrioName
             private float lBumperHold = 0f;
             private Rigidbody2D playerRb;
 
+            [Header("GameObject References")]
+            public GameObject goalManagerGO;
+
             public override void Start()
             {
                 base.Start(); //Do not erase this line!
-
+                
                 playerRb = GetComponent<Rigidbody2D>();
                 playerTorque = 0f;
 
@@ -46,13 +49,18 @@ namespace TrioName
 
             private void Update()
             {
-                GetInput();
+
+                if (Tick < 8 && !goalManagerGO.GetComponent<GoalManager>().asWin)
+                {
+                    GetInput();
+                }
+
             }
 
             //TimedUpdate is called once every tick.
             public override void TimedUpdate()
             {
-                if (Tick < 8)
+                if (Tick < 8 && !goalManagerGO.GetComponent<GoalManager>().asWin)
                 {
                     ApplyImpule();
                 }
@@ -73,13 +81,13 @@ namespace TrioName
             private void DirManager()
             {
                 if (lBumperHold > 0 && rBumperHold <= 0)
-                    playerTorque = -1f;
+                    playerTorque = -1f * lBumperHold;
 
                 else if (lBumperHold <= 0 && rBumperHold > 0)
-                    playerTorque = 1f;
+                    playerTorque = 1f * rBumperHold;
 
                 else if ((lBumperHold > 0 && rBumperHold > 0) || (lBumperHold <= 0 && rBumperHold <= 0))
-                    playerTorque = 0f;
+                    playerTorque = 0f * lBumperHold * rBumperHold;
             }
 
             /// <summary>
