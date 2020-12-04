@@ -9,12 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5619958200219598518}
-  - component: {fileID: 5619958200219598513}
   - component: {fileID: 5619958200219598519}
-  - component: {fileID: 5619958200219598516}
+  - component: {fileID: 5619958200219598513}
   m_Layer: 0
   m_Name: Goal
-  m_TagString: Untagged
+  m_TagString: Finish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28,27 +27,11 @@ Transform:
   m_GameObject: {fileID: 5619958200219598512}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 6.54, y: 2.35, z: 0}
-  m_LocalScale: {x: 0.44637108, y: 0.44637108, z: 0.44637108}
+  m_LocalScale: {x: 0.4463711, y: 0.4463711, z: 0.4463711}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!58 &5619958200219598513
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5619958200219598512}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.05131833, y: 0}
-  serializedVersion: 2
-  m_Radius: 2.1678584
 --- !u!212 &5619958200219598519
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -85,8 +68,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1951159473
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 1076203882672174bb888202454e8d74, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -99,19 +82,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5619958200219598516
-MonoBehaviour:
+--- !u!58 &5619958200219598513
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5619958200219598512}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a8c39a42e23393a4c817e5f10df54acb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bpm: 60
-  currentDifficulty: 0
-  timer: 0
-  currentTime: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.037984394, y: -0.23806812}
+  serializedVersion: 2
+  m_Radius: 1.6309842

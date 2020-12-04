@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace TrioName
+namespace ACommeAkuma
 {
-    namespace MiniGameName
+    namespace SaveThePirate
     {
 
         /// <summary>
@@ -21,14 +21,15 @@ namespace TrioName
             public float impulseScale;
 
             [Header("Debug")]
-            public float playerTorque;
+            [SerializeField] private float playerTorque;
+            [SerializeField] public bool asWin;
+
+            [Header("GameObject References")]
+            public GameObject goalManagerGO;
 
             private float rBumperHold = 0f;
             private float lBumperHold = 0f;
             private Rigidbody2D playerRb;
-
-            [Header("GameObject References")]
-            public GameObject goalManagerGO;
 
             public override void Start()
             {
@@ -36,6 +37,7 @@ namespace TrioName
                 
                 playerRb = GetComponent<Rigidbody2D>();
                 playerTorque = 0f;
+                asWin = false;
 
             }
 
@@ -49,8 +51,7 @@ namespace TrioName
 
             private void Update()
             {
-
-                if (Tick < 8 && !goalManagerGO.GetComponent<GoalManager>().asWin)
+                if (Tick <= 8 && Tick > 1 && !asWin)
                 {
                     GetInput();
                 }
@@ -60,9 +61,23 @@ namespace TrioName
             //TimedUpdate is called once every tick.
             public override void TimedUpdate()
             {
-                if (Tick < 8 && !goalManagerGO.GetComponent<GoalManager>().asWin)
+                if (Tick <= 8 && Tick > 1 && !asWin)
                 {
                     ApplyImpule();
+                }
+
+                else if (Tick > 8)
+                {
+                    if (asWin)
+                    {
+                        Debug.Log("You won");
+                        //Manager.Instance.Result(true)
+                    }
+                    else
+                    {
+                        Debug.Log("You lost");
+                        //Manager.Instance.Result(false)
+                    }
                 }
             }
 
@@ -87,7 +102,7 @@ namespace TrioName
                     playerTorque = 1f * rBumperHold;
 
                 else if ((lBumperHold > 0 && rBumperHold > 0) || (lBumperHold <= 0 && rBumperHold <= 0))
-                    playerTorque = 0f * lBumperHold * rBumperHold;
+                    playerTorque = 0f;
             }
 
             /// <summary>
@@ -112,6 +127,15 @@ namespace TrioName
             private void ApplyImpule()
             {
                 playerRb.AddForce(transform.TransformDirection(Vector2.right) * impulseScale, ForceMode2D.Impulse);
+            }
+
+            private void OnTriggerEnter2D(Collider2D other)
+            {
+                if (other.gameObject.tag == "Finish" && !asWin)
+                {
+                    asWin = true;
+                    playerRb.velocity = Vector2.zero;
+                }
             }
         }
     }
