@@ -51,14 +51,17 @@ namespace TrioName
 
             public override void TimedUpdate()
             {
-                if (Tick == 8)
+                if (Tick == 5)
                 {
                     if (isLaunched == false)
                     {
                         LaunchPirate();
                         isLaunched = true;
+                        Debug.Log("launch");
                     }
                 }
+                if (Tick == 8)
+                    Debug.Log("too late");
             }
             public void LaunchPirate()
             {

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Testing;
 
 namespace TrioName
 {
@@ -34,6 +35,7 @@ namespace TrioName
                 if (other.gameObject.tag == "Projectile")
                 {
                     win = true;
+                    //Manager.Instance.Result(true);
                     Debug.Log("Win");
                 }
             }
