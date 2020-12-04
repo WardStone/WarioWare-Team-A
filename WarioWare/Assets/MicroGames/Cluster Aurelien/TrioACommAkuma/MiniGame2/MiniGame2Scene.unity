@@ -859,12 +859,16 @@ MonoBehaviour:
   timer: 0
   currentTime: 0
   anchorActuel: {fileID: 264748179}
-  initialVelocity: {x: 0, y: 0}
   cannonForce: 15
   projectileGravity: 1.7
   pirateProject: {fileID: 3212087040214915725, guid: 1ba567dc68edcac46af260ac478b8dd4,
     type: 3}
+  numberOfPoints: 12
+  PointPrefab: {fileID: 323693459862264476, guid: 684b1eb802b43574dbc8e86cc3426615,
+    type: 3}
+  Points: []
   isLaunched: 0
+  initialVelocity: {x: 0, y: 0}
 --- !u!4 &1958575868
 Transform:
   m_ObjectHideFlags: 0
