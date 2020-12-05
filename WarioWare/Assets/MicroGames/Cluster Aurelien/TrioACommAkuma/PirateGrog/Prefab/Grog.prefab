@@ -269,7 +269,7 @@ MonoBehaviour:
   timer: 0
   currentTime: 0
   grog: {fileID: 8307053682569939289}
-  grogAmount: 60
+  grogAmount: 0
   fillSpeed: 35
   maxGrogAmount: 100
   minGrogAmount: 60
