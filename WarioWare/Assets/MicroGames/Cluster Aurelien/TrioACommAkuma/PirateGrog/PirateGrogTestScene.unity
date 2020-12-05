@@ -465,8 +465,10 @@ MonoBehaviour:
   timer: 0
   currentTime: 0
   grog: {fileID: 572476826}
-  grogAmount: 0
-  fillSpeed: 50
+  grogAmount: 60
+  fillSpeed: 35
+  maxGrogAmount: 100
+  minGrogAmount: 0
 --- !u!1 &846944626
 GameObject:
   m_ObjectHideFlags: 0

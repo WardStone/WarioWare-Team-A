@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: 
     guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/MicroGames/Cluster Aurelien/TrioACommAkuma/PirateGrog/PirateGrogTestScene.unity
+    guid: 2f3fe7a9fa3e94d42a509dce80a71abe
   m_configObjects: {}
