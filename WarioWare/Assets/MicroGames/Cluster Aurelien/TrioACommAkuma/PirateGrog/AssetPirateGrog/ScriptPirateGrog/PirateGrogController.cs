@@ -27,7 +27,7 @@ namespace TrioName
             [SerializeField]
             private int fillSpeed;
 
-            [Header("Different Cup")]
+            [Header("Tool for Different Cup")]
             [SerializeField]
             private float[] whenToChangeSpeed;
             [SerializeField]
