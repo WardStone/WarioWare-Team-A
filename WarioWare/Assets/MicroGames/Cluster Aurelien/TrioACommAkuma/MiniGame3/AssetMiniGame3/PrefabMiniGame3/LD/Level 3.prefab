@@ -1790,18 +1790,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3770884811627300362}
     m_Modifications:
-    - target: {fileID: 755534439, guid: 103a38aa387505141b94cf150e398e10, type: 3}
-      propertyPath: m_Parameters.colorGradient.key0.a
-      value: 0.78431374
-      objectReference: {fileID: 0}
-    - target: {fileID: 755534439, guid: 103a38aa387505141b94cf150e398e10, type: 3}
-      propertyPath: m_Parameters.colorGradient.key1.a
-      value: 0.19607843
-      objectReference: {fileID: 0}
-    - target: {fileID: 755534439, guid: 103a38aa387505141b94cf150e398e10, type: 3}
-      propertyPath: m_Parameters.numCornerVertices
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2614902223050997555, guid: 103a38aa387505141b94cf150e398e10,
         type: 3}
       propertyPath: m_Name
@@ -1861,41 +1849,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 12.7890005
-      objectReference: {fileID: 0}
-    - target: {fileID: 2614902223050997566, guid: 103a38aa387505141b94cf150e398e10,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.28130355
-      objectReference: {fileID: 0}
-    - target: {fileID: 2614902223050997566, guid: 103a38aa387505141b94cf150e398e10,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.27713788
-      objectReference: {fileID: 0}
-    - target: {fileID: 2614902223050997566, guid: 103a38aa387505141b94cf150e398e10,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.26973227
-      objectReference: {fileID: 0}
-    - target: {fileID: 2614902223050997567, guid: 103a38aa387505141b94cf150e398e10,
-        type: 3}
-      propertyPath: goalManagerGO
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 2614902223050997567, guid: 103a38aa387505141b94cf150e398e10,
-        type: 3}
-      propertyPath: playerDragQuick
-      value: 3.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2614902223050997567, guid: 103a38aa387505141b94cf150e398e10,
-        type: 3}
-      propertyPath: impulseScale
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 2614902223050997567, guid: 103a38aa387505141b94cf150e398e10,
-        type: 3}
-      propertyPath: playerTorqueScale
-      value: 1.25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 103a38aa387505141b94cf150e398e10, type: 3}

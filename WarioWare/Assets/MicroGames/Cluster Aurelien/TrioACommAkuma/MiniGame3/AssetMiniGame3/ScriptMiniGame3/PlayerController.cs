@@ -14,11 +14,13 @@ namespace ACommeAkuma
         {
             [Header("Player Movement")]
             public float playerTorqueScale;
-            [Range(0f, 10f)] public float playerDragSlow;
-            [Range(0f, 10f)] public float playerDragQuick;
+            [HideInInspector] [Range(0f, 10f)] public float playerDragSlow;
+            [HideInInspector] [Range(0f, 10f)] public float playerDragQuick;
+            
 
             [Header("TickEvent")]
             public float impulseScale;
+            public float decreaseForceScale;
 
             [Header("Debug")]
             [SerializeField] private float playerTorque;
@@ -30,6 +32,8 @@ namespace ACommeAkuma
             private float rBumperHold = 0f;
             private float lBumperHold = 0f;
             private Rigidbody2D playerRb;
+            private float decreaseForce;
+            private bool canApplyForce;
 
             public override void Start()
             {
@@ -56,6 +60,11 @@ namespace ACommeAkuma
                     GetInput();
                 }
 
+                if (canApplyForce)
+                {
+                    ApplyForce();
+                }
+
             }
 
             //TimedUpdate is called once every tick.
@@ -63,7 +72,9 @@ namespace ACommeAkuma
             {
                 if (Tick <= 8 && Tick > 1 && !asWin)
                 {
-                    ApplyImpule();
+                    //ApplyImpule();
+                    canApplyForce = true;
+                    decreaseForce = 1f;
                 }
 
                 else if (Tick > 8)
@@ -89,7 +100,7 @@ namespace ACommeAkuma
                 lBumperHold = Input.GetAxis("Left_Trigger");
 
                 DirManager();
-                SpeedManager();
+                //SpeedManager();
                 ApplyTorque();
             }
 
@@ -127,6 +138,19 @@ namespace ACommeAkuma
             private void ApplyImpule()
             {
                 playerRb.AddForce(transform.TransformDirection(Vector2.right) * impulseScale, ForceMode2D.Impulse);
+            }
+
+            private void ApplyForce()
+            {
+                playerRb.AddForce(transform.TransformDirection(Vector2.right) * decreaseForce * impulseScale, ForceMode2D.Force);
+
+                decreaseForce -= decreaseForceScale * Time.deltaTime;
+
+                if (decreaseForce <= 0f)
+                {
+                    decreaseForce = 0f;
+                    canApplyForce = false;
+                }
             }
 
             private void OnTriggerEnter2D(Collider2D other)

@@ -235,7 +235,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 2
   m_AngularDrag: 10
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -275,8 +275,11 @@ MonoBehaviour:
   currentDifficulty: 0
   timer: 0
   currentTime: 0
-  playerTorqueScale: 0.75
+  playerTorqueScale: 7.5
   playerDragSlow: 5
   playerDragQuick: 2
-  impulseScale: 11
+  impulseScale: 50
+  decreaseForceScale: 1.5
   playerTorque: 0
+  asWin: 0
+  goalManagerGO: {fileID: 0}
