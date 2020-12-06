@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 755534437}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.95, z: 0}
+  m_LocalPosition: {x: -2.93, y: -0.95, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2614902223050997566}
@@ -71,10 +71,10 @@ TrailRenderer:
   m_SortingLayerID: -1315980465
   m_SortingLayer: -1
   m_SortingOrder: 10
-  m_Time: 6
+  m_Time: 1.5
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 0.7
+    widthMultiplier: 0.6
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -131,7 +131,7 @@ TrailRenderer:
     numCornerVertices: 0
     numCapVertices: 0
     alignment: 0
-    textureMode: 0
+    textureMode: 1
     shadowBias: 0.5
     generateLightingData: 0
   m_MinVertexDistance: 0.1
@@ -235,7 +235,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 2
+  m_LinearDrag: 5
   m_AngularDrag: 10
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -275,11 +275,9 @@ MonoBehaviour:
   currentDifficulty: 0
   timer: 0
   currentTime: 0
-  playerTorqueScale: 7.5
-  playerDragSlow: 5
-  playerDragQuick: 2
-  impulseScale: 50
-  decreaseForceScale: 1.5
-  playerTorque: 0
+  rotationSpeed: 5
+  boostStrengh: 50
+  velocityLossSpeed: 1.5
+  rotationDir: 0
   asWin: 0
   goalManagerGO: {fileID: 0}

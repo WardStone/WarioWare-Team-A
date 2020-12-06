@@ -13,17 +13,17 @@ namespace ACommeAkuma
         public class PlayerController : TimedBehaviour
         {
             [Header("Player Movement")]
-            public float playerTorqueScale;
-            [HideInInspector] [Range(0f, 10f)] public float playerDragSlow;
-            [HideInInspector] [Range(0f, 10f)] public float playerDragQuick;
+            public float rotationSpeed;
+            //[Range(0f, 10f)] public float playerDragSlow;
+            //[Range(0f, 10f)] public float playerDragQuick;
             
 
             [Header("TickEvent")]
-            public float impulseScale;
-            public float decreaseForceScale;
+            public float boostStrengh;
+            public float velocityLossSpeed;
 
             [Header("Debug")]
-            [SerializeField] private float playerTorque;
+            [SerializeField] private float rotationDir;
             [SerializeField] public bool asWin;
 
             [Header("GameObject References")]
@@ -32,7 +32,7 @@ namespace ACommeAkuma
             private float rBumperHold = 0f;
             private float lBumperHold = 0f;
             private Rigidbody2D playerRb;
-            private float decreaseForce;
+            private float velocityLoss;
             private bool canApplyForce;
 
             public override void Start()
@@ -40,7 +40,7 @@ namespace ACommeAkuma
                 base.Start(); //Do not erase this line!
                 
                 playerRb = GetComponent<Rigidbody2D>();
-                playerTorque = 0f;
+                rotationDir = 0f;
                 asWin = false;
 
             }
@@ -50,21 +50,15 @@ namespace ACommeAkuma
             {
                 base.FixedUpdate(); //Do not erase this line!
 
-                
-            }
-
-            private void Update()
-            {
                 if (Tick <= 8 && Tick > 1 && !asWin)
                 {
                     GetInput();
-                }
 
-                if (canApplyForce)
-                {
-                    ApplyForce();
+                    if (canApplyForce)
+                    {
+                        ApplyForce();
+                    }
                 }
-
             }
 
             //TimedUpdate is called once every tick.
@@ -74,7 +68,7 @@ namespace ACommeAkuma
                 {
                     //ApplyImpule();
                     canApplyForce = true;
-                    decreaseForce = 1f;
+                    velocityLoss = 1f;
                 }
 
                 else if (Tick > 8)
@@ -107,15 +101,16 @@ namespace ACommeAkuma
             private void DirManager()
             {
                 if (lBumperHold > 0 && rBumperHold <= 0)
-                    playerTorque = -1f * lBumperHold;
+                    rotationDir = -1f * lBumperHold;
 
                 else if (lBumperHold <= 0 && rBumperHold > 0)
-                    playerTorque = 1f * rBumperHold;
+                    rotationDir = 1f * rBumperHold;
 
                 else if ((lBumperHold > 0 && rBumperHold > 0) || (lBumperHold <= 0 && rBumperHold <= 0))
-                    playerTorque = 0f;
+                    rotationDir = 0f;
             }
 
+            /*
             /// <summary>
             /// Set the boat drag to increase and decrease the speed
             /// </summary>
@@ -126,10 +121,11 @@ namespace ACommeAkuma
                 else
                     playerRb.drag = playerDragSlow;
             }
+            */
 
             private void ApplyTorque()
             {
-                playerRb.AddTorque(playerTorque * playerTorqueScale, ForceMode2D.Force);
+                playerRb.AddTorque((rotationDir * rotationSpeed), ForceMode2D.Force);
             }
 
             /// <summary>
@@ -137,20 +133,18 @@ namespace ACommeAkuma
             /// </summary>
             private void ApplyImpule()
             {
-                playerRb.AddForce(transform.TransformDirection(Vector2.right) * impulseScale, ForceMode2D.Impulse);
+                playerRb.AddForce(transform.TransformDirection(Vector2.right) * boostStrengh, ForceMode2D.Impulse);
             }
 
             private void ApplyForce()
             {
-                playerRb.AddForce(transform.TransformDirection(Vector2.right) * decreaseForce * impulseScale, ForceMode2D.Force);
+                playerRb.AddForce(transform.TransformDirection(Vector2.right) * boostStrengh * velocityLoss , ForceMode2D.Force);
 
-                decreaseForce -= decreaseForceScale * Time.deltaTime;
+                if (velocityLoss > 0f)
+                    velocityLoss -= velocityLossSpeed * Time.deltaTime;
 
-                if (decreaseForce <= 0f)
-                {
-                    decreaseForce = 0f;
+                else
                     canApplyForce = false;
-                }
             }
 
             private void OnTriggerEnter2D(Collider2D other)
