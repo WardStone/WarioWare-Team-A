@@ -12,9 +12,14 @@ EditorBuildSettings:
     path: Assets/Common/TestingScene/TestingScene.unity
     guid: 2064f4f6dc1de1746a019d595f5da6b3
   - enabled: 1
+<<<<<<< HEAD
     path: 
     guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/MicroGames/Cluster Aurelien/TrioACommAkuma/PirateGrog/PirateGrogTestScene.unity
     guid: 2f3fe7a9fa3e94d42a509dce80a71abe
+=======
+    path: Assets/MicroGames/Cluster Aurelien/TrioACommAkuma/MiniGame2/MiniGame2Scene.unity
+    guid: 98aa54dc32c17774486159a32c22b95d
+>>>>>>> SIP_MicroJeu2
   m_configObjects: {}
