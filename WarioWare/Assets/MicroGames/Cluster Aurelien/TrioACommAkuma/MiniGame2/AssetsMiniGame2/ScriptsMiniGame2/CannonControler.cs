@@ -27,6 +27,8 @@ namespace TrioName
             [HideInInspector] public bool isLaunched;
             [HideInInspector] public Vector2 initialVelocity;
 
+            [HideInInspector] public float bpmGameAccelerator;
+
 
             public override void Start()
             {
@@ -36,6 +38,7 @@ namespace TrioName
                 {
                     Points[i] = Instantiate(PointPrefab, transform.position, Quaternion.identity);
                 }
+                bpmGameAccelerator = bpm / 60;
             }
 
             public override void FixedUpdate()
@@ -51,7 +54,7 @@ namespace TrioName
 
             public override void TimedUpdate()
             {
-                if (Tick == 5)
+                if (Tick == 6)
                 {
                     if (isLaunched == false)
                     {
@@ -68,8 +71,9 @@ namespace TrioName
                 GameObject bulletInstance = Instantiate(pirateProject, anchorActuel.transform.position, Quaternion.Euler(new Vector3(0, 0, 0))) as GameObject;
                 Rigidbody2D rbPirate;
                 rbPirate = bulletInstance.GetComponent<Rigidbody2D>();
-                rbPirate.gravityScale = projectileGravity;
-                rbPirate.velocity = initialVelocity.normalized * cannonForce;
+                rbPirate.gravityScale = projectileGravity * bpmGameAccelerator * bpmGameAccelerator;
+                rbPirate.velocity = initialVelocity.normalized * cannonForce * bpmGameAccelerator;
+                Debug.Log(rbPirate.velocity);
             }
 
             void SetTrajectoryPoints(Vector3 pStartPosition, Vector3 pVelocity)
@@ -85,7 +89,7 @@ namespace TrioName
                     float dy = velocity * fTime * Mathf.Sin(angle * Mathf.Deg2Rad) - (Physics2D.gravity.magnitude * fTime * fTime / 2.0f*projectileGravity);
                     Vector3 pos = new Vector3(pStartPosition.x + dx, pStartPosition.y + dy, 2);
                     Points[i].transform.position = pos;
-                    Points[i].transform.eulerAngles = new Vector3(0, 0, Mathf.Atan2(pVelocity.y - (Physics.gravity.magnitude) * projectileGravity * fTime, pVelocity.x) * Mathf.Rad2Deg);
+                    Points[i].transform.eulerAngles = new Vector3(0, 0, Mathf.Atan2(pVelocity.y - (Physics.gravity.magnitude) * projectileGravity * fTime, pVelocity.x * bpmGameAccelerator) * Mathf.Rad2Deg);
                     fTime += 0.1f;
                 }
             }

@@ -277,8 +277,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 200892227}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11.07, y: -0.32, z: -0.5165587}
-  m_LocalScale: {x: 0.16511016, y: 0.15933642, z: 0.07976888}
+  m_LocalPosition: {x: -7.66, y: -1.054, z: -0.47}
+  m_LocalScale: {x: 0.13603225, y: 0.13127534, z: 0.06572061}
   m_Children:
   - {fileID: 1832125190}
   - {fileID: 1794377045}
@@ -682,8 +682,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1352877137}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.76, y: -0.32, z: -0.5165587}
-  m_LocalScale: {x: 0.16511016, y: 0.15933642, z: 0.07976888}
+  m_LocalPosition: {x: 8.366, y: -1.054, z: -0.47}
+  m_LocalScale: {x: 0.13603225, y: 0.13127534, z: 0.06572061}
   m_Children:
   - {fileID: 550625842}
   m_Father: {fileID: 0}
@@ -1049,6 +1049,7 @@ GameObject:
   - component: {fileID: 1958575867}
   - component: {fileID: 1958575870}
   - component: {fileID: 1958575869}
+  - component: {fileID: 1958575872}
   m_Layer: 0
   m_Name: CannonBaseAnchor
   m_TagString: Untagged
@@ -1083,6 +1084,7 @@ MonoBehaviour:
   Points: []
   isLaunched: 0
   initialVelocity: {x: 0, y: 0}
+  bpmGameAccelerator: 0
 --- !u!4 &1958575868
 Transform:
   m_ObjectHideFlags: 0
@@ -1114,7 +1116,7 @@ FixedJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: -6.8649597, y: -6.920218}
+  m_ConnectedAnchor: {x: -6.864962, y: -6.920222}
   m_DampingRatio: 0
   m_Frequency: 0
 --- !u!50 &1958575870
@@ -1152,7 +1154,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anchorRb: {fileID: 264748182}
   playerForce: 2
-  cannonMass: 1.5
+  cannonMass: 1.15
+--- !u!233 &1958575872
+HingeJoint2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1958575866}
+  m_Enabled: 0
+  serializedVersion: 4
+  m_EnableCollision: 0
+  m_ConnectedRigidBody: {fileID: 264748182}
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_AutoConfigureConnectedAnchor: 1
+  m_Anchor: {x: 0, y: 0}
+  m_ConnectedAnchor: {x: -6.8649597, y: -6.920218}
+  m_UseMotor: 0
+  m_Motor:
+    m_MotorSpeed: 10
+    m_MaximumMotorForce: 10000
+  m_UseLimits: 1
+  m_AngleLimits:
+    m_LowerAngle: -135.01952
+    m_UpperAngle: -34.54549
 --- !u!1 &2112324340
 GameObject:
   m_ObjectHideFlags: 0
@@ -1164,6 +1190,7 @@ GameObject:
   - component: {fileID: 2112324343}
   - component: {fileID: 2112324342}
   - component: {fileID: 2112324341}
+  - component: {fileID: 2112324344}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1236,3 +1263,34 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2112324344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2112324340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
