@@ -47,10 +47,10 @@ MonoBehaviour:
   currentDifficulty: 0
   timer: 0
   currentTime: 0
-  level1Prefab: {fileID: 3681148762105031727, guid: 0ed3863e3ea6f6f4a9959b7004dc904a,
+  level1Prefab: {fileID: 4283060980528565686, guid: 399c5c4895210104f808e49d3ecab1cb,
     type: 3}
-  level2Prefab: {fileID: 2678654302880087603, guid: b89ec0e4604fe354591c4adc6624eb78,
+  level2Prefab: {fileID: 4702153971201274780, guid: 133425ec44f0a8241b112cf5ed76d061,
     type: 3}
-  level3Prefab: {fileID: 3770884811627300363, guid: f6f9d87524fa41f4f870705a010af908,
+  level3Prefab: {fileID: 4934573242883858075, guid: 3cdaba050dad05d4887c9c081f4aec8b,
     type: 3}
   difficulty: 3

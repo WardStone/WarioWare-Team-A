@@ -241,7 +241,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!70 &2614902223050997564
 CapsuleCollider2D:
@@ -275,7 +275,7 @@ MonoBehaviour:
   currentDifficulty: 0
   timer: 0
   currentTime: 0
-  rotationSpeed: 5
+  rotationSpeed: 6
   boostStrengh: 50
   velocityLossSpeed: 1.5
   rotationDir: 0

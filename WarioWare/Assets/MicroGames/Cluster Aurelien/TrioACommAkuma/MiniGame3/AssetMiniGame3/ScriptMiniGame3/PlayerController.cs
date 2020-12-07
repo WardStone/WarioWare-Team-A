@@ -14,10 +14,7 @@ namespace ACommeAkuma
         {
             [Header("Player Movement")]
             public float rotationSpeed;
-            //[Range(0f, 10f)] public float playerDragSlow;
-            //[Range(0f, 10f)] public float playerDragQuick;
             
-
             [Header("TickEvent")]
             public float boostStrengh;
             public float velocityLossSpeed;
@@ -50,11 +47,11 @@ namespace ACommeAkuma
             {
                 base.FixedUpdate(); //Do not erase this line!
 
-                if (Tick <= 8 && Tick > 1 && !asWin)
+                if (Tick <= 8 && !asWin)
                 {
                     GetInput();
 
-                    if (canApplyForce)
+                    if (Tick > 1 && canApplyForce)
                     {
                         ApplyForce();
                     }
@@ -94,7 +91,6 @@ namespace ACommeAkuma
                 lBumperHold = Input.GetAxis("Left_Trigger");
 
                 DirManager();
-                //SpeedManager();
                 ApplyTorque();
             }
 
@@ -110,30 +106,9 @@ namespace ACommeAkuma
                     rotationDir = 0f;
             }
 
-            /*
-            /// <summary>
-            /// Set the boat drag to increase and decrease the speed
-            /// </summary>
-            private void SpeedManager()
-            {
-                if (lBumperHold > 0 && rBumperHold > 0)
-                    playerRb.drag = playerDragQuick;
-                else
-                    playerRb.drag = playerDragSlow;
-            }
-            */
-
             private void ApplyTorque()
             {
                 playerRb.AddTorque((rotationDir * rotationSpeed), ForceMode2D.Force);
-            }
-
-            /// <summary>
-            /// Give the player an impulse forward (USE IN TIMED UPDATE)
-            /// </summary>
-            private void ApplyImpule()
-            {
-                playerRb.AddForce(transform.TransformDirection(Vector2.right) * boostStrengh, ForceMode2D.Impulse);
             }
 
             private void ApplyForce()

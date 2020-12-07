@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Testing;
 namespace ACommeAkuma
 {
     namespace SaveThePirate
@@ -17,24 +17,24 @@ namespace ACommeAkuma
             public GameObject level3Prefab;
 
             [Header("Difficulty")]
-            [Range(1, 3)] public int difficulty;
+            public Manager.Difficulty difficulty;
 
 
             public override void Start()
             {
                 base.Start(); //Do not erase this line!
 
-                if (difficulty == 1)
+                switch (difficulty)
                 {
-                    Instantiate(level1Prefab, transform);
-                }
-                else if (difficulty == 2)
-                {
-                    Instantiate(level2Prefab, transform);
-                }
-                else
-                {
-                    Instantiate(level3Prefab, transform);
+                    case Manager.Difficulty.EASY:
+                        Instantiate(level1Prefab, transform);
+                        break;
+                    case Manager.Difficulty.MEDIUM:
+                        Instantiate(level2Prefab, transform);
+                        break;
+                    case Manager.Difficulty.HARD:
+                        Instantiate(level3Prefab, transform);
+                        break;
                 }
 
             }
@@ -44,6 +44,7 @@ namespace ACommeAkuma
             {
                 base.FixedUpdate(); //Do not erase this line!
 
+
             }
 
             //TimedUpdate is called once every tick.
@@ -51,6 +52,7 @@ namespace ACommeAkuma
             {
 
             }
+
         }
     }
 }

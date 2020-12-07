@@ -17,7 +17,9 @@ MonoBehaviour:
   haptiqueChal: 0
   inputChal: 0
   indexEnum: 0
+  verbe: 'SAUVEZ-LE ! '
   microGameScene:
     sceneAsset: {fileID: 102900000, guid: 277f6b617c88de84e98a16bbffeebd11, type: 3}
     required: 1
-    buildIndex: -1
+    buildIndex: 0
+  currentDifficulty: 0
