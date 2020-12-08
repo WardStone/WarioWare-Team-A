@@ -22,10 +22,13 @@ namespace TrioName
             private float maxGrogAmount;
             [SerializeField]
             private float minGrogAmount;
+            //private bool overFill = false;
 
             [Header ("Speed Var")]
             [SerializeField]
             private int fillSpeed;
+            [SerializeField]
+            private bool canFill = true;
 
             [Header("Tool for Different Cup")]
             [SerializeField]
@@ -62,14 +65,15 @@ namespace TrioName
             {
                 yJoystickRight = Input.GetAxisRaw("Right_Joystick_Y");
 
-                if (yJoystickRight > 0)
+                if (yJoystickRight > 0 && canFill == true) 
                 {
-                    grogAmount += Time.fixedDeltaTime * fillSpeed * yJoystickRight;
+                    grogAmount += Time.fixedDeltaTime * fillSpeed * yJoystickRight;         //Controler
                 }
 
                 if (grogAmount > maxGrogAmount)
                 {
-                    grogAmount = maxGrogAmount;
+                    //overFill = true;
+                    canFill = false;
                 }
 
                 grog.fillAmount = grogAmount / maxGrogAmount;
@@ -88,8 +92,9 @@ namespace TrioName
             {
                 if (Tick == 8)
                 {
+                    canFill = false;
                     Debug.Log(Tick);
-                    if (grogAmount >= minGrogAmount && grogAmount <= maxGrogAmount)
+                    if (grogAmount >= minGrogAmount && grogAmount <= maxGrogAmount)     //Make the player win or lose at Tick 8
                     {
                         Debug.Log("win");
                     }
