@@ -23,12 +23,16 @@ namespace ACommeAkuma
             [SerializeField] private float rotationDir;
             [SerializeField] public bool asWin;
 
+            [Header("GameObject References")]
+            public GameObject exploVfx;
+
             private float rBumperHold = 0f;
             private float lBumperHold = 0f;
             private Rigidbody2D playerRb;
             private float velocityLoss;
             private bool canApplyForce;
             private GameObject motorGO;
+            private GameObject vfxAnchor;
 
             public override void Start()
             {
@@ -38,6 +42,7 @@ namespace ACommeAkuma
                 rotationDir = 0f;
                 asWin = false;
                 motorGO = transform.GetChild(1).gameObject;
+                vfxAnchor = motorGO.transform.GetChild(0).gameObject;
 
             }
 
@@ -63,7 +68,7 @@ namespace ACommeAkuma
             {
                 if (Tick <= 8 && Tick > 1 && !asWin)
                 {
-                    //ApplyImpule();
+                    ActivateExplo();
                     canApplyForce = true;
                     velocityLoss = 1f;
                 }
@@ -133,6 +138,12 @@ namespace ACommeAkuma
                 else if ((lBumperHold > 0 && rBumperHold > 0) || (lBumperHold <= 0 && rBumperHold <= 0))
                     motorGO.transform.localEulerAngles = Vector3.zero;
             }
+
+            private void ActivateExplo()
+            {
+                Instantiate(exploVfx, vfxAnchor.transform.position, Quaternion.identity);
+            }
+
 
             private void OnTriggerEnter2D(Collider2D other)
             {
