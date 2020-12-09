@@ -17,9 +17,9 @@ MonoBehaviour:
   haptiqueChal: 0
   inputChal: 0
   indexEnum: 0
-  verbe: 
+  verbe: Servir
   microGameScene:
     sceneAsset: {fileID: 102900000, guid: 2f3fe7a9fa3e94d42a509dce80a71abe, type: 3}
     required: 1
-    buildIndex: -1
+    buildIndex: 1
   currentDifficulty: 0
