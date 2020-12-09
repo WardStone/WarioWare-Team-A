@@ -23,14 +23,12 @@ namespace ACommeAkuma
             [SerializeField] private float rotationDir;
             [SerializeField] public bool asWin;
 
-            [Header("GameObject References")]
-            public GameObject goalManagerGO;
-
             private float rBumperHold = 0f;
             private float lBumperHold = 0f;
             private Rigidbody2D playerRb;
             private float velocityLoss;
             private bool canApplyForce;
+            private GameObject motorGO;
 
             public override void Start()
             {
@@ -39,6 +37,7 @@ namespace ACommeAkuma
                 playerRb = GetComponent<Rigidbody2D>();
                 rotationDir = 0f;
                 asWin = false;
+                motorGO = transform.GetChild(1).gameObject;
 
             }
 
@@ -50,6 +49,7 @@ namespace ACommeAkuma
                 if (Tick <= 8 && !asWin)
                 {
                     GetInput();
+                    RotateMotor();
 
                     if (Tick > 1 && canApplyForce)
                     {
@@ -120,6 +120,18 @@ namespace ACommeAkuma
 
                 else
                     canApplyForce = false;
+            }
+
+            private void RotateMotor()
+            {
+                if (lBumperHold > 0 && rBumperHold <= 0)
+                    motorGO.transform.localEulerAngles = new Vector3(0f, 0f, 25f * lBumperHold);
+
+                else if (lBumperHold <= 0 && rBumperHold > 0)
+                    motorGO.transform.localEulerAngles = new Vector3(0f, 0f, -25f * rBumperHold);
+
+                else if ((lBumperHold > 0 && rBumperHold > 0) || (lBumperHold <= 0 && rBumperHold <= 0))
+                    motorGO.transform.localEulerAngles = Vector3.zero;
             }
 
             private void OnTriggerEnter2D(Collider2D other)

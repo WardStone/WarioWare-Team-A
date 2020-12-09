@@ -303,10 +303,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
+    - target: {fileID: 529073496565600367, guid: 45ac606f2b3247f42a72fb72a469f14b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4923150244184653797, guid: 45ac606f2b3247f42a72fb72a469f14b,
         type: 3}
       propertyPath: difficulty
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 45ac606f2b3247f42a72fb72a469f14b, type: 3}

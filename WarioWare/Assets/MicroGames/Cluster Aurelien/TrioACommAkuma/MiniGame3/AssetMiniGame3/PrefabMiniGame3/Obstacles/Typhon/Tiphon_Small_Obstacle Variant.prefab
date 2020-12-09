@@ -22,6 +22,36 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 5407624465670885443, guid: c35f9eb186de2a34d97d94c783719682,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.6933962
+      objectReference: {fileID: 0}
+    - target: {fileID: 5407624465670885443, guid: c35f9eb186de2a34d97d94c783719682,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.96233636
+      objectReference: {fileID: 0}
+    - target: {fileID: 5407624465670885443, guid: c35f9eb186de2a34d97d94c783719682,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0.5882353
+      objectReference: {fileID: 0}
+    - target: {fileID: 5407624465670885444, guid: c35f9eb186de2a34d97d94c783719682,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: 0.1283871
+      objectReference: {fileID: 0}
+    - target: {fileID: 5407624465670885444, guid: c35f9eb186de2a34d97d94c783719682,
+        type: 3}
+      propertyPath: m_Radius
+      value: 1.4461088
+      objectReference: {fileID: 0}
+    - target: {fileID: 5407624465670885445, guid: c35f9eb186de2a34d97d94c783719682,
+        type: 3}
+      propertyPath: m_ForceMagnitude
+      value: -12
+      objectReference: {fileID: 0}
     - target: {fileID: 5407624465670885446, guid: c35f9eb186de2a34d97d94c783719682,
         type: 3}
       propertyPath: m_LocalPosition.x
