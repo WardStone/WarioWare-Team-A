@@ -50,11 +50,12 @@ namespace TrioName
             public override void FixedUpdate()
             {
                 base.FixedUpdate(); //Do not erase this line!
+                FillGrog();
             }
 
             public void Update()
             {
-                FillGrog();
+                //FillGrog();
             }
 
             //TimedUpdate is called once every tick.
