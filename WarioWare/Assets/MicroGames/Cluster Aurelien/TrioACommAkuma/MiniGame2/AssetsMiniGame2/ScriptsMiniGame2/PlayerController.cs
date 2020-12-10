@@ -16,14 +16,15 @@ public class PlayerController : MonoBehaviour
     }
     void Update()
     {
-
         if (Input.GetButtonDown("A_Button") /*&& canLift*/)
         {
             /*canLift = false;
             StartCoroutine(cooldownCannon());
             cannnonHinge.useMotor = true;*/
             anchorRb.velocity = Vector2.up * playerForce;
-
+            //anchorRb.AddForce(Vector2.up * playerForce*50);
+            Debug.Log("up");
+            Debug.Log(anchorRb.velocity);
         }
     }
 /*
