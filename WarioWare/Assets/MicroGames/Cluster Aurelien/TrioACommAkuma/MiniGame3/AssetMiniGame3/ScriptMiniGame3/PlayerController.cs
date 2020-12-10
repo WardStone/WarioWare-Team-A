@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Testing;
 
 namespace ACommeAkuma
 {
@@ -78,12 +79,12 @@ namespace ACommeAkuma
                     if (asWin)
                     {
                         Debug.Log("You won");
-                        //Manager.Instance.Result(true)
+                        Manager.Instance.Result(true);
                     }
                     else
                     {
                         Debug.Log("You lost");
-                        //Manager.Instance.Result(false)
+                        Manager.Instance.Result(false);
                     }
                 }
             }

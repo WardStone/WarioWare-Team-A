@@ -271,7 +271,7 @@ MonoBehaviour:
   overFillAmount: 100
   maxGrogAmount: 90
   minGrogAmount: 75
-  fillSpeed: 5
+  fillSpeed: 30
   canFill: 1
   whenToChangeSpeed: []
   changeFillSpeed: 

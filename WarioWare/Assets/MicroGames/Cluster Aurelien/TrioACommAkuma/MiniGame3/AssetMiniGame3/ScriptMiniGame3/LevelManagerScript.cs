@@ -24,7 +24,7 @@ namespace ACommeAkuma
             {
                 base.Start(); //Do not erase this line!
 
-                switch (difficulty)
+                switch (currentDifficulty)
                 {
                     case Manager.Difficulty.EASY:
                         Instantiate(level1Prefab, transform);

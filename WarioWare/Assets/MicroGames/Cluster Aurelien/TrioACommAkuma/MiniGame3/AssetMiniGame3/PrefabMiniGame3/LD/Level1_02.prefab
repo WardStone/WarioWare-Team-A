@@ -3666,6 +3666,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4283060980528565687}
     m_Modifications:
+    - target: {fileID: 3799729544057049134, guid: efa61cd16ebe06e4f9fe14ce4339ce2e,
+        type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5619958200219598512, guid: efa61cd16ebe06e4f9fe14ce4339ce2e,
         type: 3}
       propertyPath: m_Name
@@ -3674,12 +3679,12 @@ PrefabInstance:
     - target: {fileID: 5619958200219598518, guid: efa61cd16ebe06e4f9fe14ce4339ce2e,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.87
+      value: 5.03
       objectReference: {fileID: 0}
     - target: {fileID: 5619958200219598518, guid: efa61cd16ebe06e4f9fe14ce4339ce2e,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.93
+      value: -0.48
       objectReference: {fileID: 0}
     - target: {fileID: 5619958200219598518, guid: efa61cd16ebe06e4f9fe14ce4339ce2e,
         type: 3}

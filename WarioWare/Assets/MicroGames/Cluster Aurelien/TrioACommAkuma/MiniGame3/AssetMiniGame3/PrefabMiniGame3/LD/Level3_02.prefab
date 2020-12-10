@@ -947,6 +947,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4934573242883858074}
     m_Modifications:
+    - target: {fileID: 2813771127996939501, guid: efa61cd16ebe06e4f9fe14ce4339ce2e,
+        type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4278190080
+      objectReference: {fileID: 0}
     - target: {fileID: 5619958200219598512, guid: efa61cd16ebe06e4f9fe14ce4339ce2e,
         type: 3}
       propertyPath: m_Name
@@ -955,12 +960,12 @@ PrefabInstance:
     - target: {fileID: 5619958200219598518, guid: efa61cd16ebe06e4f9fe14ce4339ce2e,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.95
+      value: -1.7
       objectReference: {fileID: 0}
     - target: {fileID: 5619958200219598518, guid: efa61cd16ebe06e4f9fe14ce4339ce2e,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.56
+      value: 3.3
       objectReference: {fileID: 0}
     - target: {fileID: 5619958200219598518, guid: efa61cd16ebe06e4f9fe14ce4339ce2e,
         type: 3}
