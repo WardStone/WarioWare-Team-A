@@ -459,6 +459,10 @@ PrefabInstance:
       propertyPath: m_MaskInteraction
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 597850875, guid: 309b0a4fbd9890a4881923dfea3b3ce7, type: 3}
+      propertyPath: m_ShapeTexture
+      value: 
+      objectReference: {fileID: 2800000, guid: 09c54163c0778b047bd9bbf958810ad8, type: 3}
     - target: {fileID: 3093663958442258920, guid: 309b0a4fbd9890a4881923dfea3b3ce7,
         type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.size
@@ -1149,6 +1153,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 597850874, guid: 309b0a4fbd9890a4881923dfea3b3ce7, type: 3}
+      propertyPath: m_StretchUV
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 597850874, guid: 309b0a4fbd9890a4881923dfea3b3ce7, type: 3}
       propertyPath: m_OptimizeCollider
       value: 1
       objectReference: {fileID: 0}
@@ -1392,6 +1400,10 @@ PrefabInstance:
       propertyPath: m_MaskInteraction
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 597850875, guid: 309b0a4fbd9890a4881923dfea3b3ce7, type: 3}
+      propertyPath: m_ShapeTexture
+      value: 
+      objectReference: {fileID: 2800000, guid: 09c54163c0778b047bd9bbf958810ad8, type: 3}
     - target: {fileID: 3093663958442258920, guid: 309b0a4fbd9890a4881923dfea3b3ce7,
         type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.size
@@ -2008,7 +2020,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 597850874, guid: 309b0a4fbd9890a4881923dfea3b3ce7, type: 3}
       propertyPath: m_StretchUV
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 597850874, guid: 309b0a4fbd9890a4881923dfea3b3ce7, type: 3}
       propertyPath: m_OptimizeCollider
@@ -2254,6 +2266,10 @@ PrefabInstance:
       propertyPath: m_MaskInteraction
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 597850875, guid: 309b0a4fbd9890a4881923dfea3b3ce7, type: 3}
+      propertyPath: m_ShapeTexture
+      value: 
+      objectReference: {fileID: 2800000, guid: 09c54163c0778b047bd9bbf958810ad8, type: 3}
     - target: {fileID: 3093663958442258920, guid: 309b0a4fbd9890a4881923dfea3b3ce7,
         type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.size
@@ -2870,7 +2886,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 597850874, guid: 309b0a4fbd9890a4881923dfea3b3ce7, type: 3}
       propertyPath: m_StretchUV
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 597850874, guid: 309b0a4fbd9890a4881923dfea3b3ce7, type: 3}
       propertyPath: m_OptimizeCollider
@@ -3116,6 +3132,10 @@ PrefabInstance:
       propertyPath: m_MaskInteraction
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 597850875, guid: 309b0a4fbd9890a4881923dfea3b3ce7, type: 3}
+      propertyPath: m_ShapeTexture
+      value: 
+      objectReference: {fileID: 2800000, guid: 09c54163c0778b047bd9bbf958810ad8, type: 3}
     - target: {fileID: 3093663958442258920, guid: 309b0a4fbd9890a4881923dfea3b3ce7,
         type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.size
@@ -3705,31 +3725,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5619958200219598518, guid: efa61cd16ebe06e4f9fe14ce4339ce2e,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.4463711
-      objectReference: {fileID: 0}
-    - target: {fileID: 5619958200219598518, guid: efa61cd16ebe06e4f9fe14ce4339ce2e,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.4463711
-      objectReference: {fileID: 0}
-    - target: {fileID: 5619958200219598518, guid: efa61cd16ebe06e4f9fe14ce4339ce2e,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.4463711
-      objectReference: {fileID: 0}
-    - target: {fileID: 5619958200219598519, guid: efa61cd16ebe06e4f9fe14ce4339ce2e,
-        type: 3}
-      propertyPath: m_SortingLayerID
-      value: -1951159473
-      objectReference: {fileID: 0}
-    - target: {fileID: 5619958200219598519, guid: efa61cd16ebe06e4f9fe14ce4339ce2e,
-        type: 3}
-      propertyPath: m_SortingLayer
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: efa61cd16ebe06e4f9fe14ce4339ce2e, type: 3}

@@ -115,7 +115,7 @@ SpriteShapeRenderer:
   m_SortingOrder: 0
   m_Color: {r: 0.4433962, g: 0.4433962, b: 0.4433962, a: 1}
   m_MaskInteraction: 0
-  m_ShapeTexture: {fileID: 2800000, guid: 0633912121d68b148baf3679712407d5, type: 3}
+  m_ShapeTexture: {fileID: 2800000, guid: 09c54163c0778b047bd9bbf958810ad8, type: 3}
   m_Sprites: []
   m_LocalAABB:
     m_Center: {x: -1.2381047, y: -0.79851913, z: 0}
@@ -185,7 +185,7 @@ MonoBehaviour:
   m_StretchTiling: 1
   m_SplineDetail: 16
   m_AdaptiveUV: 1
-  m_StretchUV: 0
+  m_StretchUV: 1
   m_WorldSpaceUV: 0
   m_CornerAngleThreshold: 30
   m_ColliderDetail: 8
@@ -321,7 +321,7 @@ SpriteShapeRenderer:
   m_SortingOrder: 0
   m_Color: {r: 0.4433962, g: 0.4433962, b: 0.4433962, a: 1}
   m_MaskInteraction: 0
-  m_ShapeTexture: {fileID: 2800000, guid: 0633912121d68b148baf3679712407d5, type: 3}
+  m_ShapeTexture: {fileID: 2800000, guid: 09c54163c0778b047bd9bbf958810ad8, type: 3}
   m_Sprites: []
   m_LocalAABB:
     m_Center: {x: 0.74136806, y: -0.7352812, z: 0}
@@ -391,7 +391,7 @@ MonoBehaviour:
   m_StretchTiling: 1
   m_SplineDetail: 16
   m_AdaptiveUV: 1
-  m_StretchUV: 0
+  m_StretchUV: 1
   m_WorldSpaceUV: 0
   m_CornerAngleThreshold: 30
   m_ColliderDetail: 8
@@ -602,7 +602,7 @@ SpriteShapeRenderer:
   m_SortingOrder: 0
   m_Color: {r: 0.4433962, g: 0.4433962, b: 0.4433962, a: 1}
   m_MaskInteraction: 0
-  m_ShapeTexture: {fileID: 2800000, guid: 0633912121d68b148baf3679712407d5, type: 3}
+  m_ShapeTexture: {fileID: 2800000, guid: 09c54163c0778b047bd9bbf958810ad8, type: 3}
   m_Sprites: []
   m_LocalAABB:
     m_Center: {x: -0.7850714, y: -0.4977796, z: 0}
@@ -654,7 +654,7 @@ MonoBehaviour:
   m_StretchTiling: 1
   m_SplineDetail: 16
   m_AdaptiveUV: 1
-  m_StretchUV: 0
+  m_StretchUV: 1
   m_WorldSpaceUV: 0
   m_CornerAngleThreshold: 30
   m_ColliderDetail: 8
