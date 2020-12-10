@@ -1,7 +1,10 @@
 fileFormatVersion: 2
 guid: 6f70af47018811945b7fb85223031d10
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 6649374123284656356
+    second: RopeWario 1_0
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
