@@ -19,13 +19,18 @@ namespace TrioName
             [SerializeField] [Range (0,100)]
             private float grogAmount;
             [SerializeField]
+            private float overFillAmount;
+            [SerializeField]
             private float maxGrogAmount;
             [SerializeField]
             private float minGrogAmount;
+            private bool overFill = false;
 
             [Header ("Speed Var")]
             [SerializeField]
             private int fillSpeed;
+            [SerializeField]
+            private bool canFill = true;
 
             [Header("Tool for Different Cup")]
             [SerializeField]
@@ -45,34 +50,36 @@ namespace TrioName
             public override void FixedUpdate()
             {
                 base.FixedUpdate(); //Do not erase this line!
+                FillGrog();
             }
 
             public void Update()
             {
-                FillGrog();
+                //FillGrog();
             }
 
             //TimedUpdate is called once every tick.
             public override void TimedUpdate()
             {
-                Win();
+                WinLose();
             }
 
             void FillGrog()
             {
                 yJoystickRight = Input.GetAxisRaw("Right_Joystick_Y");
 
-                if (yJoystickRight > 0)
+                if (yJoystickRight > 0 && canFill == true) 
                 {
-                    grogAmount += Time.fixedDeltaTime * fillSpeed * yJoystickRight;
+                    grogAmount += Time.fixedDeltaTime * fillSpeed * yJoystickRight;         //Controler
                 }
 
-                if (grogAmount > maxGrogAmount)
+                if (grogAmount > overFillAmount)
                 {
-                    grogAmount = maxGrogAmount;
+                    overFill = true;
+                    canFill = false;
                 }
 
-                grog.fillAmount = grogAmount / maxGrogAmount;
+                grog.fillAmount = grogAmount / overFillAmount;
 
 
                   for(int i = 0; i < whenToChangeSpeed.Length; i++)                 // Tool that permit easy changing cup shape
@@ -84,17 +91,28 @@ namespace TrioName
                   }
             }
             
-            void Win()
+            void WinLose()
             {
+                if (overFill == true)
+                {
+                    Manager.Instance.Result(false);
+                    Debug.Log("Lose");
+                }
+
                 if (Tick == 8)
                 {
+                    canFill = false;
                     Debug.Log(Tick);
-                    if (grogAmount >= minGrogAmount && grogAmount <= maxGrogAmount)
+                    if (grogAmount >= minGrogAmount && grogAmount <= maxGrogAmount)     //Make the player win or lose at Tick 8
                     {
-                        Debug.Log("win");
+                        Manager.Instance.Result(true);
+                        Debug.Log("Win");
                     }
-                    else Debug.Log("Lose");
-
+                    else
+                    {
+                        Manager.Instance.Result(false);
+                        Debug.Log("Lose");
+                    }
                 }
             }
         }
