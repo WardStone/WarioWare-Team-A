@@ -26,6 +26,8 @@ namespace ACommeAkuma
 
             [Header("GameObject References")]
             public GameObject exploVfx;
+            public GameObject goalGO;
+
 
             private float rBumperHold = 0f;
             private float lBumperHold = 0f;
@@ -34,6 +36,7 @@ namespace ACommeAkuma
             private bool canApplyForce;
             private GameObject motorGO;
             private GameObject vfxAnchor;
+            
 
             public override void Start()
             {
@@ -142,7 +145,7 @@ namespace ACommeAkuma
 
             private void ActivateExplo()
             {
-                Instantiate(exploVfx, vfxAnchor.transform.position, Quaternion.identity);
+                Instantiate(exploVfx, vfxAnchor.transform.position, Quaternion.identity, vfxAnchor.transform);
             }
 
 
@@ -151,6 +154,9 @@ namespace ACommeAkuma
                 if (other.gameObject.tag == "Finish" && !asWin)
                 {
                     asWin = true;
+
+                    goalGO.transform.GetChild(0).GetComponent<Animator>().SetBool("AsWin", true);
+
                     playerRb.velocity = Vector2.zero;
                 }
             }
