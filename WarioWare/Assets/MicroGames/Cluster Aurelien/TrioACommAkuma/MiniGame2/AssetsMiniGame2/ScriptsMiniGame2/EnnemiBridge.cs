@@ -7,6 +7,9 @@ namespace TrioName
 {
     namespace MiniGameName
     {
+        /// <summary>
+        /// Simon PICARDAT
+        /// </summary>
         public class EnnemiBridge : TimedBehaviour
         {
             [HideInInspector] public bool win = false;
@@ -26,7 +29,8 @@ namespace TrioName
             //TimedUpdate is called once every tick.
             public override void TimedUpdate()
             {
-
+                if (Tick == 8 && win == false)
+                    Manager.Instance.Result(false);
             }
 
 
@@ -35,8 +39,9 @@ namespace TrioName
                 if (other.gameObject.tag == "Projectile")
                 {
                     win = true;
-                    //Manager.Instance.Result(true);
-                    Debug.Log("Win");
+                    Manager.Instance.Result(true);
+                    other.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+                    Debug.Log("Win" + Tick);
                 }
             }
         }

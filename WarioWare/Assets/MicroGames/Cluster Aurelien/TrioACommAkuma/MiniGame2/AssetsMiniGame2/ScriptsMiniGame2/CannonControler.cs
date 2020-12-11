@@ -6,6 +6,9 @@ namespace TrioName
 {
     namespace MiniGameName
     {
+        /// <summary>
+        /// Simon PICARDAT
+        /// </summary>
         public class CannonControler : TimedBehaviour
         {
 
@@ -71,6 +74,7 @@ namespace TrioName
                 GameObject bulletInstance = Instantiate(pirateProject, anchorActuel.transform.position, Quaternion.Euler(new Vector3(0, 0, 0))) as GameObject;
                 Rigidbody2D rbPirate;
                 rbPirate = bulletInstance.GetComponent<Rigidbody2D>();
+                pirateProject.transform.rotation = gameObject.transform.rotation;
                 rbPirate.gravityScale = projectileGravity * bpmGameAccelerator * bpmGameAccelerator;
                 rbPirate.velocity = initialVelocity.normalized * cannonForce * bpmGameAccelerator;
                 Debug.Log(rbPirate.velocity);

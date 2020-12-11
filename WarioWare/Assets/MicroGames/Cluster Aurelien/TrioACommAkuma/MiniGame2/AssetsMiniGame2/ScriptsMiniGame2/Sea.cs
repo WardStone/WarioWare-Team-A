@@ -7,6 +7,9 @@ namespace TrioName
 {
     namespace MiniGameName
     {
+        /// <summary>
+        /// Simon PICARDAT
+        /// </summary>
         public class Sea : MonoBehaviour
         {
             public bool loose;
@@ -15,8 +18,8 @@ namespace TrioName
                 if (other.gameObject.tag == "Projectile")
                 {
                     loose = true;
-                    //Manager.Instance.Result(true);
-                    Debug.Log("Looser");
+                    Manager.Instance.Result(false);
+                    Debug.Log("Loose");
                 }
             }
         }

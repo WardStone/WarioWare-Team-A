@@ -5,7 +5,11 @@ using UnityEngine;
 namespace TrioName
 {
     namespace MiniGameName
-    {
+    { 
+        /// <summary>
+       /// Simon PICARDAT
+       /// </summary>
+
         public class WickManager : TimedBehaviour
         {
             public List<GameObject> wickTick;
