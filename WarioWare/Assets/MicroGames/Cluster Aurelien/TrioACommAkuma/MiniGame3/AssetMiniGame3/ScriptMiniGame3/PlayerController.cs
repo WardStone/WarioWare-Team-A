@@ -13,6 +13,7 @@ namespace ACommeAkuma
         /// </summary>
         public class PlayerController : TimedBehaviour
         {
+            #region variables
             [Header("Player Movement")]
             public float rotationSpeed;
             
@@ -22,12 +23,14 @@ namespace ACommeAkuma
 
             [Header("Debug")]
             [SerializeField] private float rotationDir;
-            [SerializeField] public bool asWin;
+            public bool asWin;
+            [SerializeField] private GameObject audioManagerGO;
 
-            [Header("GameObject References")]
+            [Header("Prefab References")]
             public GameObject exploVfx;
-            public GameObject goalGO;
 
+            [Header("Scene GO References")]
+            public GameObject goalGO;
 
             private float rBumperHold = 0f;
             private float lBumperHold = 0f;
@@ -36,7 +39,7 @@ namespace ACommeAkuma
             private bool canApplyForce;
             private GameObject motorGO;
             private GameObject vfxAnchor;
-            
+            #endregion
 
             public override void Start()
             {
@@ -47,6 +50,7 @@ namespace ACommeAkuma
                 asWin = false;
                 motorGO = transform.GetChild(1).gameObject;
                 vfxAnchor = motorGO.transform.GetChild(0).gameObject;
+                audioManagerGO = GameObject.Find("AudioManager");
 
             }
 
@@ -60,7 +64,7 @@ namespace ACommeAkuma
                     GetInput();
                     RotateMotor();
 
-                    if (Tick > 1 && canApplyForce)
+                    if (canApplyForce)
                     {
                         ApplyForce();
                     }
@@ -70,7 +74,7 @@ namespace ACommeAkuma
             //TimedUpdate is called once every tick.
             public override void TimedUpdate()
             {
-                if (Tick <= 8 && Tick > 1 && !asWin)
+                if (Tick <= 8 && !asWin)
                 {
                     ActivateExplo();
                     canApplyForce = true;
@@ -91,7 +95,6 @@ namespace ACommeAkuma
                     }
                 }
             }
-
 
             private void GetInput()
             {
@@ -120,6 +123,9 @@ namespace ACommeAkuma
                 playerRb.AddTorque((rotationDir * rotationSpeed), ForceMode2D.Force);
             }
 
+            /// <summary>
+            /// Apply a force that slowly decrease with time.
+            /// </summary>
             private void ApplyForce()
             {
                 playerRb.AddForce(transform.TransformDirection(Vector2.right) * boostStrengh * velocityLoss , ForceMode2D.Force);
@@ -131,6 +137,9 @@ namespace ACommeAkuma
                     canApplyForce = false;
             }
 
+            /// <summary>
+            /// Rotate the motor at the back of the boat depending one the ratation of the boat.
+            /// </summary>
             private void RotateMotor()
             {
                 if (lBumperHold > 0 && rBumperHold <= 0)
@@ -145,7 +154,11 @@ namespace ACommeAkuma
 
             private void ActivateExplo()
             {
+                //VFX
                 Instantiate(exploVfx, vfxAnchor.transform.position, Quaternion.identity, vfxAnchor.transform);
+
+                //SFX
+                audioManagerGO.GetComponent<AudioManagerScript>().PlayExploVFX();
             }
 
 
