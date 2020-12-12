@@ -13,6 +13,7 @@ namespace TrioName
         public class EnnemiBridge : TimedBehaviour
         {
             [HideInInspector] public bool win = false;
+            public GameObject victoriousPirate;
             public override void Start()
             {
                 base.Start(); //Do not erase this line!
@@ -40,7 +41,9 @@ namespace TrioName
                 {
                     win = true;
                     Manager.Instance.Result(true);
-                    other.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+                    GameObject pirateInstance = Instantiate(victoriousPirate, other.transform.position, Quaternion.Euler(new Vector3(0, 0, 0))) as GameObject;
+                    //pirateInstance.gameObject.GetComponent<Animator>().speed = pirateInstance.gameObject.GetComponent<Animator>().speed * ((bpm / 60) / 1.5f);
+                    Destroy(other.gameObject);
                     Debug.Log("Win" + Tick);
                 }
             }

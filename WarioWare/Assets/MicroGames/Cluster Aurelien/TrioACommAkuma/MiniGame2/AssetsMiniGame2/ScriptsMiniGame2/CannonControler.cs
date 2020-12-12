@@ -33,6 +33,9 @@ namespace TrioName
             [HideInInspector] public float bpmGameAccelerator;
 
 
+
+
+
             public override void Start()
             {
                 base.Start(); //Do not erase this line!
@@ -71,10 +74,12 @@ namespace TrioName
             }
             public void LaunchPirate()
             {
+                gameObject.transform.GetChild(2).gameObject.SetActive(false);
                 GameObject bulletInstance = Instantiate(pirateProject, anchorActuel.transform.position, Quaternion.Euler(new Vector3(0, 0, 0))) as GameObject;
                 Rigidbody2D rbPirate;
                 rbPirate = bulletInstance.GetComponent<Rigidbody2D>();
-                pirateProject.transform.rotation = gameObject.transform.rotation;
+                bulletInstance.transform.rotation = gameObject.transform.rotation;
+                bulletInstance.transform.Rotate(0,0,-90);
                 rbPirate.gravityScale = projectileGravity * bpmGameAccelerator * bpmGameAccelerator;
                 rbPirate.velocity = initialVelocity.normalized * cannonForce * bpmGameAccelerator;
                 Debug.Log(rbPirate.velocity);

@@ -17,9 +17,7 @@ namespace TrioName
             {
                 if (other.gameObject.tag == "Projectile")
                 {
-                    loose = true;
-                    Manager.Instance.Result(false);
-                    Debug.Log("Loose");
+                    Destroy(other);
                 }
             }
         }
