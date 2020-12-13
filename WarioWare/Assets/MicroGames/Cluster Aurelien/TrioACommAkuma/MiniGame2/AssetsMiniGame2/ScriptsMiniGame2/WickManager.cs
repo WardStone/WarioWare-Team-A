@@ -15,11 +15,12 @@ namespace TrioName
             public List<GameObject> wickTick;
             public int tickCount;
             public int tickMax;
+            [HideInInspector] AudioSource audioTick;
 
             public override void Start()
             {
                 base.Start(); //Do not erase this line!
-
+                audioTick = GetComponent<AudioSource>();
             }
 
             //FixedUpdate is called on a fixed time.
@@ -32,19 +33,24 @@ namespace TrioName
             //TimedUpdate is called once every tick.
             public override void TimedUpdate()
             {
+                if (tickCount > tickMax)
+                    gameObject.SetActive(false);
                 if (tickCount == tickMax)
                 {
-                    gameObject.SetActive(false);
+                    audioTick.Play(0);
+                    wickTick[tickCount].SetActive(false);
+                    tickCount++;
                 }
 
                 if (tickCount < tickMax)
                 {
-
+                    audioTick.Play(0);
                     wickTick[tickCount].SetActive(false);
                     tickCount++;
                     wickTick[tickCount].transform.GetChild(0).gameObject.SetActive(true);
                 }
-                
+
+
             }
         }
     }

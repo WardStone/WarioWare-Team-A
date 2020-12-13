@@ -20,7 +20,7 @@ namespace TrioName
             public float cannonForce;
             public float projectileGravity;
             public GameObject pirateProject;
-
+            public GameObject smokeParticle;
 
 
             public int numberOfPoints;
@@ -32,7 +32,7 @@ namespace TrioName
 
             [HideInInspector] public float bpmGameAccelerator;
 
-
+            [HideInInspector] public AudioSource cannonBlast;
 
 
 
@@ -45,6 +45,7 @@ namespace TrioName
                     Points[i] = Instantiate(PointPrefab, transform.position, Quaternion.identity);
                 }
                 bpmGameAccelerator = bpm / 60;
+                cannonBlast = GetComponent<AudioSource>();
             }
 
             public override void FixedUpdate()
@@ -75,6 +76,7 @@ namespace TrioName
             public void LaunchPirate()
             {
                 gameObject.transform.GetChild(2).gameObject.SetActive(false);
+                cannonBlast.Play(0);
                 GameObject bulletInstance = Instantiate(pirateProject, anchorActuel.transform.position, Quaternion.Euler(new Vector3(0, 0, 0))) as GameObject;
                 Rigidbody2D rbPirate;
                 rbPirate = bulletInstance.GetComponent<Rigidbody2D>();
@@ -82,6 +84,7 @@ namespace TrioName
                 bulletInstance.transform.Rotate(0,0,-90);
                 rbPirate.gravityScale = projectileGravity * bpmGameAccelerator * bpmGameAccelerator;
                 rbPirate.velocity = initialVelocity.normalized * cannonForce * bpmGameAccelerator;
+                GameObject smokeInstance = Instantiate(smokeParticle, anchorActuel.transform.position, Quaternion.Euler(new Vector3(-90, 0, 0))) as GameObject;
                 Debug.Log(rbPirate.velocity);
             }
 
