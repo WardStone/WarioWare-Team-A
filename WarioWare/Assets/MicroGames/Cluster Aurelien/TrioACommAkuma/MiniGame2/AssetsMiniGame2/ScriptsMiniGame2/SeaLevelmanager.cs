@@ -30,18 +30,18 @@ namespace TrioName
 
                 switch (currentDifficulty)
                 {
-                    case Manager.Difficulty.EASY:
+                    case Difficulty.EASY:
                         easyMode.SetActive(true);
                         currentDifficultyMode = easyMode; 
                         difficultyNum = 1;
                         break;
-                    case Manager.Difficulty.MEDIUM:
+                    case Difficulty.MEDIUM:
                         mediumMode.SetActive(true);
 
                         currentDifficultyMode = mediumMode;
                         difficultyNum = 2;
                         break;
-                    case Manager.Difficulty.HARD:
+                    case Difficulty.HARD:
                         hardMode.SetActive(true);
                         currentDifficultyMode = hardMode;
                         difficultyNum = 3;
