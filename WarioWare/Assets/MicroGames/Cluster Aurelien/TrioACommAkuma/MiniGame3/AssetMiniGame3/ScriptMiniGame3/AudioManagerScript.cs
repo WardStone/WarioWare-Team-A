@@ -23,6 +23,11 @@ namespace ACommeAkuma
             {
                 sourceList[1].Play();
             }
+
+            public void PlayHelpSFX()
+            {
+                sourceList[2].Play();
+            }
         }
     }
 }
