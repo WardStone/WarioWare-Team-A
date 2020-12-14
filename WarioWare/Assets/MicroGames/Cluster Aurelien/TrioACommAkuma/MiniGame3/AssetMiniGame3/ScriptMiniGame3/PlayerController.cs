@@ -39,6 +39,7 @@ namespace ACommeAkuma
             private bool canApplyForce;
             private GameObject motorGO;
             private GameObject vfxAnchor;
+            private bool canImpactSFX = true;
             #endregion
 
             public override void Start()
@@ -109,10 +110,10 @@ namespace ACommeAkuma
             private void DirManager()
             {
                 if (lBumperHold > 0 && rBumperHold <= 0)
-                    rotationDir = -1f * lBumperHold;
+                    rotationDir = -1f * (Mathf.Exp(lBumperHold) - 1f);
 
                 else if (lBumperHold <= 0 && rBumperHold > 0)
-                    rotationDir = 1f * rBumperHold;
+                    rotationDir = 1f * (Mathf.Exp(rBumperHold) - 1f);
 
                 else if ((lBumperHold > 0 && rBumperHold > 0) || (lBumperHold <= 0 && rBumperHold <= 0))
                     rotationDir = 0f;
@@ -158,7 +159,7 @@ namespace ACommeAkuma
                 Instantiate(exploVfx, vfxAnchor.transform.position, Quaternion.identity, vfxAnchor.transform);
 
                 //SFX
-                audioManagerGO.GetComponent<AudioManagerScript>().PlayExploVFX();
+                audioManagerGO.GetComponent<AudioManagerScript>().PlayExploSFX();
             }
 
 
@@ -172,6 +173,24 @@ namespace ACommeAkuma
 
                     playerRb.velocity = Vector2.zero;
                 }
+                
+            }
+
+            private void OnCollisionEnter2D(Collision2D other)
+            {
+                if (other.gameObject.tag == "Wall" && canImpactSFX)
+                {
+                    canImpactSFX = false;
+                    audioManagerGO.GetComponent<AudioManagerScript>().PlayImpactSFX();
+                    StartCoroutine(CooldownDown());
+                }
+            }
+
+            private IEnumerator CooldownDown()
+            {
+                yield return new WaitForSeconds(0.3f);
+
+                canImpactSFX = true;
             }
         }
     }

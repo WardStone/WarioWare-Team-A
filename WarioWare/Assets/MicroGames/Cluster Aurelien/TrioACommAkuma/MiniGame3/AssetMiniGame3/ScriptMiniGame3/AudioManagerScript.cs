@@ -14,11 +14,15 @@ namespace ACommeAkuma
             [Header("AudioSources")]
             public AudioSource[] sourceList;
 
-            public void PlayExploVFX()
+            public void PlayExploSFX()
             {
                 sourceList[0].Play();
             }
 
+            public void PlayImpactSFX()
+            {
+                sourceList[1].Play();
+            }
         }
     }
 }
