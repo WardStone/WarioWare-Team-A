@@ -36,17 +36,18 @@ namespace TrioName
             {
                 if (Tick == 8 && win == false)
                     Manager.Instance.Result(false);
+                if(Tick == 8 && win == true)
+                    Manager.Instance.Result(true);
             }
 
 
             private void OnTriggerEnter2D(Collider2D other)
             {
-                if (other.gameObject.tag == "Projectile")
+                if (other.gameObject.tag == "Projectile" && Tick < 8)
                 {
                     win = true;
                     bonk.Play(0);
                     //bonk.PlayOneShot(bonkClip);
-                    Manager.Instance.Result(true);
                     GameObject pirateInstance = Instantiate(victoriousPirate, other.transform.position, Quaternion.Euler(new Vector3(0, 0, 0))) as GameObject;
                     Destroy(other.gameObject);
                 }
