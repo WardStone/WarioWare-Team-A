@@ -6,6 +6,9 @@ namespace TrioName
 {
     namespace MiniGameName
     {
+        /// <summary>
+        /// Simon PICARDAT
+        /// </summary>
         public class CannonControler : TimedBehaviour
         {
 
@@ -17,7 +20,7 @@ namespace TrioName
             public float cannonForce;
             public float projectileGravity;
             public GameObject pirateProject;
-
+            public GameObject smokeParticle;
 
 
             public int numberOfPoints;
@@ -29,6 +32,9 @@ namespace TrioName
 
             [HideInInspector] public float bpmGameAccelerator;
 
+            [HideInInspector] public AudioSource cannonBlast;
+
+
 
             public override void Start()
             {
@@ -39,6 +45,7 @@ namespace TrioName
                     Points[i] = Instantiate(PointPrefab, transform.position, Quaternion.identity);
                 }
                 bpmGameAccelerator = bpm / 60;
+                cannonBlast = anchorActuel.GetComponent<AudioSource>();
             }
 
             public override void FixedUpdate()
@@ -60,20 +67,21 @@ namespace TrioName
                     {
                         LaunchPirate();
                         isLaunched = true;
-                        Debug.Log("launch");
                     }
                 }
-                if (Tick == 8)
-                    Debug.Log("too late");
             }
             public void LaunchPirate()
             {
+                gameObject.transform.GetChild(2).gameObject.SetActive(false);
+                cannonBlast.Play(0);
                 GameObject bulletInstance = Instantiate(pirateProject, anchorActuel.transform.position, Quaternion.Euler(new Vector3(0, 0, 0))) as GameObject;
                 Rigidbody2D rbPirate;
                 rbPirate = bulletInstance.GetComponent<Rigidbody2D>();
+                bulletInstance.transform.rotation = gameObject.transform.rotation;
+                bulletInstance.transform.Rotate(0,0,-90);
                 rbPirate.gravityScale = projectileGravity * bpmGameAccelerator * bpmGameAccelerator;
                 rbPirate.velocity = initialVelocity.normalized * cannonForce * bpmGameAccelerator;
-                Debug.Log(rbPirate.velocity);
+                GameObject smokeInstance = Instantiate(smokeParticle, anchorActuel.transform.position, Quaternion.Euler(new Vector3(-90, 0, 0))) as GameObject;
             }
 
             void SetTrajectoryPoints(Vector3 pStartPosition, Vector3 pVelocity)

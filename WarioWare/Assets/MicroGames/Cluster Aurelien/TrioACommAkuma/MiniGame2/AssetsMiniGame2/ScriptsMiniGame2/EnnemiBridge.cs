@@ -7,13 +7,21 @@ namespace TrioName
 {
     namespace MiniGameName
     {
+        /// <summary>
+        /// Simon PICARDAT
+        /// </summary>
         public class EnnemiBridge : TimedBehaviour
         {
             [HideInInspector] public bool win = false;
+            public GameObject victoriousPirate;
+
+            public AudioSource bonk;
+            public AudioClip bonkClip;
+
             public override void Start()
             {
                 base.Start(); //Do not erase this line!
-
+                bonk = GetComponent<AudioSource>();
             }
 
             //FixedUpdate is called on a fixed time.
@@ -26,7 +34,8 @@ namespace TrioName
             //TimedUpdate is called once every tick.
             public override void TimedUpdate()
             {
-
+                if (Tick == 8 && win == false)
+                    Manager.Instance.Result(false);
             }
 
 
@@ -35,10 +44,17 @@ namespace TrioName
                 if (other.gameObject.tag == "Projectile")
                 {
                     win = true;
-                    //Manager.Instance.Result(true);
-                    Debug.Log("Win");
+                    bonk.Play(0);
+                    //bonk.PlayOneShot(bonkClip);
+                    Manager.Instance.Result(true);
+                    GameObject pirateInstance = Instantiate(victoriousPirate, other.transform.position, Quaternion.Euler(new Vector3(0, 0, 0))) as GameObject;
+                    Destroy(other.gameObject);
                 }
             }
+                private void OnCollisionEnter2D(Collision2D collision)
+                {
+                    bonk.Play(0);
+                }
         }
     }
 }
