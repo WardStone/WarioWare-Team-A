@@ -17,6 +17,7 @@ namespace TrioName
             public Rigidbody2D rb;
             public Vector2 poseProj;
 
+
             public override void Start()
             {
                 base.Start(); //Do not erase this line!
@@ -38,6 +39,7 @@ namespace TrioName
             {
 
             }
+
         }
     }
 }

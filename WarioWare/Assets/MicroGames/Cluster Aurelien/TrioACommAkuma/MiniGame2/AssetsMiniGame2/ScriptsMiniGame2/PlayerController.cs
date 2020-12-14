@@ -15,8 +15,11 @@ namespace TrioName
             public Rigidbody2D anchorRb;
             public float playerForce;
             public float cannonMass;
-            /*public HingeJoint2D cannnonHinge;
-            public bool canLift;*/
+            [HideInInspector]public int soundNum;
+
+            public AudioSource squeak1;
+            public AudioSource squeak2;
+
 
             private void Start()
             {
@@ -24,24 +27,24 @@ namespace TrioName
             }
             void Update()
             {
-                if (Input.GetButtonDown("A_Button") /*&& canLift*/)
+                if (Input.GetButtonDown("A_Button"))
                 {
-                    /*canLift = false;
-                    StartCoroutine(cooldownCannon());
-                    cannnonHinge.useMotor = true;*/
+
                     anchorRb.velocity = Vector2.up * playerForce;
-                    //anchorRb.AddForce(Vector2.up * playerForce*50);
-                    Debug.Log("up");
                     Debug.Log(anchorRb.velocity);
+                    soundNum = Random.Range(1, 2);
+                    switch (soundNum) 
+                    {
+                        case 1:
+                            squeak1.Play(0);
+                            break;
+                        case 2:
+                            squeak2.Play(0);
+                            break;
+                    }
                 }
             }
-            /*
-                IEnumerator cooldownCannon()
-                {
-                    yield return new WaitForSeconds(0.2f);
-                    cannnonHinge.useMotor = false;
-                    canLift = true;
-                }*/
+            
         }
     }
 }

@@ -45,7 +45,7 @@ namespace TrioName
                     Points[i] = Instantiate(PointPrefab, transform.position, Quaternion.identity);
                 }
                 bpmGameAccelerator = bpm / 60;
-                cannonBlast = GetComponent<AudioSource>();
+                cannonBlast = anchorActuel.GetComponent<AudioSource>();
             }
 
             public override void FixedUpdate()
@@ -67,11 +67,8 @@ namespace TrioName
                     {
                         LaunchPirate();
                         isLaunched = true;
-                        Debug.Log("launch");
                     }
                 }
-                if (Tick == 8)
-                    Debug.Log("too late");
             }
             public void LaunchPirate()
             {
@@ -85,7 +82,6 @@ namespace TrioName
                 rbPirate.gravityScale = projectileGravity * bpmGameAccelerator * bpmGameAccelerator;
                 rbPirate.velocity = initialVelocity.normalized * cannonForce * bpmGameAccelerator;
                 GameObject smokeInstance = Instantiate(smokeParticle, anchorActuel.transform.position, Quaternion.Euler(new Vector3(-90, 0, 0))) as GameObject;
-                Debug.Log(rbPirate.velocity);
             }
 
             void SetTrajectoryPoints(Vector3 pStartPosition, Vector3 pVelocity)

@@ -14,10 +14,14 @@ namespace TrioName
         {
             [HideInInspector] public bool win = false;
             public GameObject victoriousPirate;
+
+            public AudioSource bonk;
+            public AudioClip bonkClip;
+
             public override void Start()
             {
                 base.Start(); //Do not erase this line!
-
+                bonk = GetComponent<AudioSource>();
             }
 
             //FixedUpdate is called on a fixed time.
@@ -40,13 +44,17 @@ namespace TrioName
                 if (other.gameObject.tag == "Projectile")
                 {
                     win = true;
+                    bonk.Play(0);
+                    //bonk.PlayOneShot(bonkClip);
                     Manager.Instance.Result(true);
                     GameObject pirateInstance = Instantiate(victoriousPirate, other.transform.position, Quaternion.Euler(new Vector3(0, 0, 0))) as GameObject;
-                    //pirateInstance.gameObject.GetComponent<Animator>().speed = pirateInstance.gameObject.GetComponent<Animator>().speed * ((bpm / 60) / 1.5f);
                     Destroy(other.gameObject);
-                    Debug.Log("Win" + Tick);
                 }
             }
+                private void OnCollisionEnter2D(Collision2D collision)
+                {
+                    bonk.Play(0);
+                }
         }
     }
 }

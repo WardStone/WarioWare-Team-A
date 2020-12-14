@@ -200,7 +200,7 @@ SpriteRenderer:
   m_Size: {x: 5.71, y: 4.96}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &-7653899694084366593
@@ -223,6 +223,7 @@ MonoBehaviour:
   angle: 0
   rb: {fileID: 0}
   poseProj: {x: 0, y: 0}
+  bonk: {fileID: 0}
 --- !u!1 &4867842768772016495
 GameObject:
   m_ObjectHideFlags: 0
