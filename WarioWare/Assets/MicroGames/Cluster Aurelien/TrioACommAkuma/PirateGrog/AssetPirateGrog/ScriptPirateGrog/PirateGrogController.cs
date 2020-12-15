@@ -27,19 +27,26 @@ namespace TrioName
             private bool overFill = false;
 
             [Header ("Speed Var")]
-            [SerializeField]
             private int fillSpeed;
+            [SerializeField]
+            private int baseFillSpeed;
             [SerializeField]
             private bool canFill = true;
 
             [Header("Tool for Different Cup")]
             [SerializeField]
-            private float[] whenToChangeSpeed;
-            [SerializeField]
-            private int[] changeFillSpeed;
+            private AnimationCurve fillGrog;
+            //[SerializeField]
+            //private float[] whenToChangeSpeed;
+            //[SerializeField]
+            //private int[] changeFillSpeed;
 
-
+            private float fillTimer;
             private float yJoystickRight;
+            [SerializeField]
+            private bool inputDetected = false;
+            [SerializeField]
+            private bool gameplayIsOver = false;
 
             public override void Start()
             {
@@ -51,26 +58,40 @@ namespace TrioName
             {
                 base.FixedUpdate(); //Do not erase this line!
                 FillGrog();
+                stopFillGrog();
             }
 
-            public void Update()
-            {
-                //FillGrog();
-            }
 
             //TimedUpdate is called once every tick.
             public override void TimedUpdate()
             {
-                WinLose();
+                //WinLose();
             }
 
             void FillGrog()
             {
-                yJoystickRight = Input.GetAxisRaw("Right_Joystick_Y");
+                yJoystickRight = -Input.GetAxisRaw("Right_Joystick_Y");
+
+                if (gameplayIsOver == true)
+                {
+                    yJoystickRight = 0f;    // Reset Controller if player already used input
+                }
 
                 if (yJoystickRight > 0 && canFill == true) 
                 {
-                    grogAmount += Time.fixedDeltaTime * fillSpeed * yJoystickRight;         //Controler
+                    grogAmount += Time.fixedDeltaTime * fillSpeed * yJoystickRight; //Controller
+                    fillTimer += Time.fixedDeltaTime;
+                }
+                else if (inputDetected == true)
+                {
+                    fillTimer -= Time.fixedDeltaTime;
+                    fillTimer = Mathf.Min(fillTimer, 1);
+                    grogAmount += Mathf.Max(0f, fillSpeed * fillTimer * Time.fixedDeltaTime);
+                    if(fillTimer < 0)
+                    {
+                        fillTimer = 0;
+                        inputDetected = false;
+                    }
                 }
 
                 if (grogAmount > overFillAmount)
@@ -80,17 +101,33 @@ namespace TrioName
                 }
 
                 grog.fillAmount = grogAmount / overFillAmount;
+                fillSpeed = (int)(fillGrog.Evaluate(grogAmount / overFillAmount) * baseFillSpeed);
+                //Debug.Log("fillSpeed = " + fillSpeed);
 
 
-                  for(int i = 0; i < whenToChangeSpeed.Length; i++)                 // Tool that permit easy changing cup shape
-                  {
-                      if(grogAmount >= whenToChangeSpeed[i])
-                      {
-                          fillSpeed = changeFillSpeed[i];
-                      }
-                  }
+                //for (int i = 0; i < whenToChangeSpeed.Length; i++)
+                //{
+                //    if (grogAmount >= whenToChangeSpeed[i])
+                //    {
+                //        fillSpeed = changeFillSpeed[i];
+                //    }
+                //}
             }
-            
+
+            /// <summary>
+            /// regarde si l'input à été utilisé
+            /// </summary>
+            void stopFillGrog()
+            {
+                if (Input.GetAxisRaw("Right_Joystick_Y") < -0.1f)
+                {
+                    inputDetected = true;
+                }
+                //if (Input.GetAxisRaw("Right_Joystick_Y") > -0.01f && inputDetected == true)
+                //{
+                //    gameplayIsOver = true;
+                //}
+            }
             void WinLose()
             {
                 if (overFill == true)
