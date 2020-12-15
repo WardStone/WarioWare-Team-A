@@ -10,16 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c2cda822bfa80074f881e6fe0192b4c9, type: 3}
-  m_Name: ID_MiniGame2
+  m_Name: ID_ALabordage
   m_EditorClassIdentifier: 
   cluster: 1
   trio: ACommeAkuma
-  haptiqueChal: 0
-  inputChal: 0
   indexEnum: 0
   verbe: ABORDEZ !
   microGameScene:
     sceneAsset: {fileID: 102900000, guid: 98aa54dc32c17774486159a32c22b95d, type: 3}
     required: 0
     buildIndex: 2
+  inputs: {fileID: 0}
   currentDifficulty: 0
+  idWeight: 0
+  hasBarrel: 0
