@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -243,41 +243,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 8120496597839729865, guid: 8e09f59318fd0a44f86506cdd4b09040,
-        type: 3}
-      propertyPath: m_CollisionDetection
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8120496598402905555, guid: 8e09f59318fd0a44f86506cdd4b09040,
-        type: 3}
-      propertyPath: m_CollisionDetection
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8120496598479719080, guid: 8e09f59318fd0a44f86506cdd4b09040,
-        type: 3}
-      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].value
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8120496598479719080, guid: 8e09f59318fd0a44f86506cdd4b09040,
-        type: 3}
-      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[1].value
-      value: 0.84615326
-      objectReference: {fileID: 0}
-    - target: {fileID: 8120496598479719080, guid: 8e09f59318fd0a44f86506cdd4b09040,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: b8e717594211cbc49b8d51cd43521cb5, type: 2}
-    - target: {fileID: 8120496598479719080, guid: 8e09f59318fd0a44f86506cdd4b09040,
-        type: 3}
-      propertyPath: m_Parameters.widthMultiplier
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8120496598479719081, guid: 8e09f59318fd0a44f86506cdd4b09040,
-        type: 3}
-      propertyPath: dropSpeed
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 8120496598479719082, guid: 8e09f59318fd0a44f86506cdd4b09040,
         type: 3}
       propertyPath: m_Name

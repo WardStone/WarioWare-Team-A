@@ -18,6 +18,9 @@ namespace ACommeAkuma
 
             public float dropSpeed;
 
+            private bool canCallStart = true;
+            private bool canCallEnd = false;
+
             private void Awake()
             {
                 liquidRenderer = this.GetComponent<LineRenderer>();
@@ -30,30 +33,36 @@ namespace ACommeAkuma
 
                 GetInput();
 
-                if (startPoint.GetComponent<LiquidCollisionDetection>().asCollided)
-                {
-                    CollisionEvent();
-                }
             }
 
             private void GetInput()
             {
-                bool spaceIsPressed = Input.GetKeyDown(KeyCode.Space);
-                bool spaceIsReleased = Input.GetKeyUp(KeyCode.Space);
+                bool spaceIsPressed = Input.GetAxisRaw("Left_Joystick_Y") < 0;
+                bool spaceIsReleased = Input.GetAxisRaw("Left_Joystick_Y") >= 0;
 
-                if (spaceIsPressed)
+
+                if (spaceIsPressed && canCallStart)
+                {
+                    canCallStart = false;
                     StartDrop();
+                    canCallEnd = true;
+                }
 
-                if (spaceIsReleased)
+                if (spaceIsReleased && canCallEnd)
+                {
+                    canCallEnd = false;
                     EndDrop();
+                    canCallStart = true;
+                }
 
             }
 
             private void StartDrop()
             {
-                startPoint.position = Vector2.zero;
-                endPoint.position = Vector2.zero;
+                startPoint.localPosition = Vector2.zero;
+                endPoint.localPosition = Vector2.zero;
 
+                startPoint.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
                 endPoint.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
 
                 startPoint.GetComponent<Rigidbody2D>().gravityScale = 0f;
@@ -66,21 +75,21 @@ namespace ACommeAkuma
                 startPoint.GetComponent<Rigidbody2D>().gravityScale = dropSpeed;
             }
 
-            private void CollisionEvent()
-            {
-                startPoint.GetComponent<BoxCollider2D>().isTrigger = true;
+            //private void CollisionEvent()
+            //{
+            //    startPoint.GetComponent<BoxCollider2D>().isTrigger = true;
 
-                startPoint.GetComponent<Rigidbody2D>().gravityScale = 0f;
-                endPoint.GetComponent<Rigidbody2D>().gravityScale = 0f;
+            //    startPoint.GetComponent<Rigidbody2D>().gravityScale = 0f;
+            //    endPoint.GetComponent<Rigidbody2D>().gravityScale = 0f;
 
-                startPoint.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-                endPoint.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            //    startPoint.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            //    endPoint.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
 
-                startPoint.position = Vector2.zero;
-                endPoint.position = Vector2.zero;
+            //    startPoint.position = Vector2.zero;
+            //    endPoint.position = Vector2.zero;
 
-                startPoint.GetComponent<LiquidCollisionDetection>().asCollided = false;
-            }
+            //    startPoint.GetComponent<LiquidCollisionDetection>().asCollided = false;
+            //}
         }
     }
 }
