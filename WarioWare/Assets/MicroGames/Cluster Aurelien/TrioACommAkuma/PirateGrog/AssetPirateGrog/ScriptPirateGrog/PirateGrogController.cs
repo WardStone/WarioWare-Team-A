@@ -49,6 +49,9 @@ namespace ACommeAkuma
             [SerializeField]
             private bool gameplayIsOver = false;
 
+            bool liquidSFX;
+            bool beerTapSFX;
+
             #endregion
 
             public override void Start()
@@ -160,6 +163,39 @@ namespace ACommeAkuma
                     }
                 }
             }
+
+            private void PlaySoundSFX()
+            {
+                if(inputDetected)
+                {
+                    liquidSFX = true;
+                    beerTapSFX = true;
+                }
+                else if(!inputDetected)
+                {
+                    liquidSFX = false;
+                    beerTapSFX = false;
+                }
+
+                if(liquidSFX == true && PGAudioSource.Instance.sourceList[0].isPlaying == false)
+                {
+                    PGAudioSource.Instance.PlayBeerLiquid();
+                }
+                else if(liquidSFX == false)
+                {
+                    PGAudioSource.Instance.StopBeerLiquid();
+                }
+
+                if (beerTapSFX == true && PGAudioSource.Instance.sourceList[1].isPlaying == false)
+                {
+                    PGAudioSource.Instance.PlayBeerTapSound();
+                }
+                else if (beerTapSFX == false)
+                {
+                    PGAudioSource.Instance.StopBeerTapSound();
+                }
+            }
+
 
             
         }
