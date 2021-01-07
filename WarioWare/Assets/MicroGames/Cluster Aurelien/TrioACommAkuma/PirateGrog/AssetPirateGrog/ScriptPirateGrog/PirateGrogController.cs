@@ -4,15 +4,16 @@ using UnityEngine;
 using UnityEngine.UI;
 using Testing;
 
-namespace TrioName
+namespace ACommeAkuma
 {
-    namespace MiniGameName
+    namespace PirateGrog
     {
         /// <summary>
         /// Bastien PRIGENT
         /// </summary>
         public class PirateGrogController : TimedBehaviour
         {
+            #region variables
             [Header ("Grog Var")]
             [SerializeField]
             private Image grog;
@@ -48,9 +49,16 @@ namespace TrioName
             [SerializeField]
             private bool gameplayIsOver = false;
 
+            #endregion
+
             public override void Start()
             {
                 base.Start(); //Do not erase this line!
+            }
+
+            public void Update()
+            {
+
             }
 
             //FixedUpdate is called on a fixed time.
@@ -65,12 +73,12 @@ namespace TrioName
             //TimedUpdate is called once every tick.
             public override void TimedUpdate()
             {
-                //WinLose();
+                WinLose();
             }
 
             void FillGrog()
             {
-                yJoystickRight = -Input.GetAxisRaw("Right_Joystick_Y");
+                yJoystickRight = -Input.GetAxisRaw("Left_Joystick_Y");
 
                 if (gameplayIsOver == true)
                 {
@@ -119,7 +127,7 @@ namespace TrioName
             /// </summary>
             void stopFillGrog()
             {
-                if (Input.GetAxisRaw("Right_Joystick_Y") < -0.1f)
+                if (Input.GetAxisRaw("Left_Joystick_Y") < -0.1f)
                 {
                     inputDetected = true;
                 }
@@ -152,6 +160,8 @@ namespace TrioName
                     }
                 }
             }
+
+            
         }
     }
 }

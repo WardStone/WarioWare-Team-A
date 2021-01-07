@@ -14,12 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cluster: 1
   trio: ACommeAkuma
-  haptiqueChal: 0
-  inputChal: 0
   indexEnum: 0
   verbe: Servir
   microGameScene:
     sceneAsset: {fileID: 102900000, guid: 2f3fe7a9fa3e94d42a509dce80a71abe, type: 3}
     required: 1
     buildIndex: 1
+  inputs: {fileID: 0}
   currentDifficulty: 0
+  idWeight: 0
+  hasBarrel: 0
