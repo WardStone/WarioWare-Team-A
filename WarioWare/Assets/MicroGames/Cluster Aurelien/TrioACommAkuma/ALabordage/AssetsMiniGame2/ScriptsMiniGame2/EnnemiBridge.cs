@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using Testing;
 
-namespace TrioName
+namespace ACommeAkuma
 {
-    namespace MiniGameName
+    namespace ALAbordage
     {
         /// <summary>
         /// Simon PICARDAT
@@ -43,7 +43,7 @@ namespace TrioName
 
             private void OnTriggerEnter2D(Collider2D other)
             {
-                if (other.gameObject.tag == "Projectile" && Tick < 8)
+                if (other.gameObject.CompareTag( "Projectile") && Tick < 8)
                 {
                     win = true;
                     bonk.Play(0);

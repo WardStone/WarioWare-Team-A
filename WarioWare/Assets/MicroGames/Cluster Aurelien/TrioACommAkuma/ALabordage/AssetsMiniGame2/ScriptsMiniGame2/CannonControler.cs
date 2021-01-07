@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace TrioName
+namespace ACommeAkuma
 {
-    namespace MiniGameName
+    namespace ALAbordage
     {
         /// <summary>
         /// Simon PICARDAT
@@ -43,6 +43,7 @@ namespace TrioName
                 for (int i = 0; i < numberOfPoints; i++)
                 {
                     Points[i] = Instantiate(PointPrefab, transform.position, Quaternion.identity);
+                    Points[i].transform.parent = gameObject.transform;
                 }
                 bpmGameAccelerator = bpm / 60;
                 cannonBlast = anchorActuel.GetComponent<AudioSource>();

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using Testing;
 
-namespace TrioName
+namespace ACommeAkuma
 {
-    namespace MiniGameName
+    namespace ALAbordage
     {
         /// <summary>
         /// Simon PICARDAT
