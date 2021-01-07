@@ -128,6 +128,36 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 230386347133204898, guid: b30ad26739782bd4abd582e406755e58,
+        type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 230386347133204898, guid: b30ad26739782bd4abd582e406755e58,
+        type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2456222991284912990, guid: b30ad26739782bd4abd582e406755e58,
+        type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2456222991284912990, guid: b30ad26739782bd4abd582e406755e58,
+        type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3680599607202174131, guid: b30ad26739782bd4abd582e406755e58,
+        type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3680599607202174131, guid: b30ad26739782bd4abd582e406755e58,
+        type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5823933379404634033, guid: b30ad26739782bd4abd582e406755e58,
         type: 3}
       propertyPath: m_Name
@@ -187,6 +217,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7966913300486088642, guid: b30ad26739782bd4abd582e406755e58,
+        type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7966913300486088642, guid: b30ad26739782bd4abd582e406755e58,
+        type: 3}
+      propertyPath: Loop
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b30ad26739782bd4abd582e406755e58, type: 3}
