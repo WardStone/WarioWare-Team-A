@@ -1,8 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using Testing;
 using UnityEngine;
 using UnityEngine.UI;
-using Testing;
 
 namespace ACommeAkuma
 {
@@ -14,10 +12,11 @@ namespace ACommeAkuma
         public class PirateGrogController : TimedBehaviour
         {
             #region variables
-            [Header ("Grog Var")]
+            [Header("Grog Var")]
             [SerializeField]
             private Image grog;
-            [SerializeField] [Range (0,100)]
+            [SerializeField]
+            [Range(0, 100)]
             private float grogAmount;
             [SerializeField]
             private float overFillAmount;
@@ -27,7 +26,7 @@ namespace ACommeAkuma
             private float minGrogAmount;
             private bool overFill = false;
 
-            [Header ("Speed Var")]
+            [Header("Speed Var")]
             private int fillSpeed;
             [SerializeField]
             private int baseFillSpeed;
@@ -57,11 +56,12 @@ namespace ACommeAkuma
             public override void Start()
             {
                 base.Start(); //Do not erase this line!
+                PlayMusic();
             }
 
             public void Update()
             {
-
+                PlaySoundSFX();
             }
 
             //FixedUpdate is called on a fixed time.
@@ -88,7 +88,7 @@ namespace ACommeAkuma
                     yJoystickRight = 0f;    // Reset Controller if player already used input
                 }
 
-                if (yJoystickRight > 0 && canFill == true) 
+                if (yJoystickRight > 0 && canFill == true)
                 {
                     grogAmount += Time.fixedDeltaTime * fillSpeed * yJoystickRight; //Controller
                     fillTimer += Time.fixedDeltaTime;
@@ -98,7 +98,7 @@ namespace ACommeAkuma
                     fillTimer -= Time.fixedDeltaTime;
                     fillTimer = Mathf.Min(fillTimer, 1);
                     grogAmount += Mathf.Max(0f, fillSpeed * fillTimer * Time.fixedDeltaTime);
-                    if(fillTimer < 0)
+                    if (fillTimer < 0)
                     {
                         fillTimer = 0;
                         inputDetected = false;
@@ -166,22 +166,22 @@ namespace ACommeAkuma
 
             private void PlaySoundSFX()
             {
-                if(inputDetected)
+                if (inputDetected)
                 {
                     liquidSFX = true;
                     beerTapSFX = true;
                 }
-                else if(!inputDetected)
+                else if (!inputDetected)
                 {
                     liquidSFX = false;
                     beerTapSFX = false;
                 }
 
-                if(liquidSFX == true && PGAudioSource.Instance.sourceList[0].isPlaying == false)
+                if (liquidSFX == true && PGAudioSource.Instance.sourceList[0].isPlaying == false)
                 {
                     PGAudioSource.Instance.PlayBeerLiquid();
                 }
-                else if(liquidSFX == false)
+                else if (liquidSFX == false)
                 {
                     PGAudioSource.Instance.StopBeerLiquid();
                 }
@@ -196,8 +196,29 @@ namespace ACommeAkuma
                 }
             }
 
+            private void PlayMusic()
+            {
+                switch(Manager.Instance.bpm)
+                {
+                    case BPM.Slow:
+                        PGAudioSource.Instance.PlayMusicSlow();
+                        break;
 
-            
+                    case BPM.Medium:
+                        PGAudioSource.Instance.PlayMusicMedium();
+                        break;
+
+                    case BPM.Fast:
+                        PGAudioSource.Instance.PlayMusicFast();
+                        break;
+
+                    case BPM.SuperFast:
+                        PGAudioSource.Instance.PlayMusicSuperFast();
+                        break;
+                }
+            }
+
+
         }
     }
 }

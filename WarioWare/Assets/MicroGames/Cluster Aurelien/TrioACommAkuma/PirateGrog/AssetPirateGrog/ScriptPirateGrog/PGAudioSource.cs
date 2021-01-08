@@ -13,11 +13,12 @@ namespace ACommeAkuma
         {
             private void Awake()
             {
-                CreateSingleton(true);
+                CreateSingleton();
             }
 
             [Header("AudioSources")]
             public AudioSource[] sourceList;
+            public BPM myBPM;
 
             public void PlayBeerLiquid()
             {
@@ -38,6 +39,26 @@ namespace ACommeAkuma
             public void StopBeerTapSound()
             {
                 sourceList[1].Stop();
+            }
+
+            public void PlayMusicSlow()
+            {
+                sourceList[2].Play();
+            }
+
+            public void PlayMusicMedium()
+            {
+                sourceList[3].Play();
+            }
+
+            public void PlayMusicFast()
+            {
+                sourceList[4].Play();
+            }
+
+            public void PlayMusicSuperFast()
+            {
+                sourceList[5].Play();
             }
         }
     }
