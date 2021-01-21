@@ -89,14 +89,14 @@ namespace ACommeAkuma
             //TimedUpdate is called once every tick.
             public override void TimedUpdate()
             {
-                if (Tick <= 8 && !asWin)
+                if (Tick < 8 && !asWin)
                 {
                     ActivateExplo();
                     canApplyForce = true;
                     velocityLoss = 1f;
                 }
 
-                else if (Tick >= 8)
+                else if (Tick == 8)
                 {
                     if (asWin)
                     {
@@ -186,6 +186,8 @@ namespace ACommeAkuma
                     goalGO.transform.GetChild(0).GetComponent<Animator>().SetBool("AsWin", true);
 
                     playerRb.velocity = Vector2.zero;
+                    playerRb.angularVelocity = 0f;
+                    playerRb.isKinematic = true;
                 }
                 
             }
